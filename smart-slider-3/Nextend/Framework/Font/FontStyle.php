@@ -14,6 +14,36 @@ class FontStyle {
     public static $fontSize = false;
 
     /**
+     * Generic font family values
+     * @url https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#generic-name
+     *
+     * @var string[]
+     */
+    private $genericFontFamilyNames = [
+        'serif',
+        'sans-serif',
+        'monospace',
+        'cursive',
+        'fantasy',
+        'system-ui',
+        'ui-serif',
+        'ui-sans-serif',
+        'ui-monospace',
+        'ui-rounded',
+        'emoji',
+        'math',
+        'fangsong'
+    ];
+
+    private $globalFontFamilyValues = [
+        'inherit',
+        'initial',
+        'revert',
+        'revert-layer',
+        'unset'
+    ];
+
+    /**
      * @param string $tab
      *
      * @return string
@@ -183,15 +213,42 @@ class FontStyle {
     public function loadFont($families) {
         $families = explode(',', $families);
         for ($i = 0; $i < count($families); $i++) {
-            if ($families[$i] != "inherit") {
-                $families[$i] = $this->getFamily(trim(trim($families[$i]), '\'"'));
-            }
+            $families[$i] = $this->getFamily(trim(trim($families[$i]), '\'"'));
         }
 
         return implode(',', $families);
     }
 
+    /**
+     * @param string $family
+     *
+     * @return bool
+     */
+    private function isGenericFamily($family) {
+        return in_array($family, $this->genericFontFamilyNames);
+    }
+
+    /**
+     * @param string $family
+     *
+     * @return bool
+     */
+    private function isGlobalFontFamilyValue($family) {
+        return in_array($family, $this->globalFontFamilyValues);
+    }
+
     private function getFamily($family) {
-        return "'" . Plugin::applyFilters('fontFamily', $family) . "'";
+
+        $family = Plugin::applyFilters('fontFamily', $family);
+
+        if ($this->isGenericFamily($family) || $this->isGlobalFontFamilyValue($family)) {
+            /**
+             * Generic family names and Global values are keywords and must not be quoted!
+             */
+
+            return $family;
+        }
+
+        return "'" . $family . "'";
     }
 }

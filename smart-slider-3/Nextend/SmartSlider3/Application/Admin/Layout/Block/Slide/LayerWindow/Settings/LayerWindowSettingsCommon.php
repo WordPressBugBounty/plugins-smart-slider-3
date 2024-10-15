@@ -215,10 +215,17 @@ class LayerWindowSettingsCommon extends AbstractLayerWindowSettings {
         $responsive = new FieldsetLayerWindowLabelFields($container, 'fields-common-responsive', n2_('Responsive'));
 
         new Text($responsive, 'generator-visible', n2_('Hide when variable empty'), '', array(
-            'rowAttributes' => array(
+            'rowAttributes'  => array(
                 'data-generator-related' => '1'
             ),
-            'style'         => 'width:280px;'
+            'style'          => 'width:280px;'
+        ));
+
+        new Text($responsive, 'generator-visible2', n2_('Hide when variable not empty'), '', array(
+            'rowAttributes'  => array(
+                'data-generator-related' => '1'
+            ),
+            'style'          => 'width:280px;'
         ));
 
         new Devices($responsive, 'show', n2_('Hide on'));

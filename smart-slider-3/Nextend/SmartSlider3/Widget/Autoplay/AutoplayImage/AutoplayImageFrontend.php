@@ -80,7 +80,7 @@ class AutoplayImageFrontend extends AbstractWidgetFrontend {
         $ext = pathinfo($play, PATHINFO_EXTENSION);
         if ($ext == 'svg' && ResourceTranslator::isResource($play)) {
 
-            FastImageSize::initAttributes($playColor, $sizeAttributes);
+            FastImageSize::initAttributes($play, $sizeAttributes);
 
             list($color, $opacity) = Color::colorToSVG($playColor);
             $play = 'data:image/svg+xml;base64,' . Base64::encode(str_replace(array(

@@ -74,7 +74,9 @@ class BulletTransitionFrontend extends AbstractBulletFrontend {
         return Html::tag("div", Html::mergeAttributes($attributes, $displayAttributes, array(
             "class" => 'n2-ss-control-bullet n2-ow-all n2-ss-control-bullet-' . $orientation . ($fullSize ? ' n2-ss-control-bullet-fullsize' : '')
         )), Html::tag("div", array(
-            "class" => $barStyle . " nextend-bullet-bar n2-bar-justify-content-" . $params->get($this->key . 'align')
+            "class"      => $barStyle . " nextend-bullet-bar n2-bar-justify-content-" . $params->get($this->key . 'align'),
+            "role"       => 'group',
+            "aria-label" => $params->get($this->key . 'aria-label', 'Choose slide to display.')
         ), '<div class="n2-bullet ' . $bulletStyle . '" style="visibility:hidden;"></div>'));
     }
 }

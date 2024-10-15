@@ -54,7 +54,7 @@ class Section {
         $cache[$section][$id] = self::$tableSectionStorage->findByAttributes(array(
             "id" => $id
         ));
-        if ($section && $cache[$section][$id]['section'] != $section) {
+        if ($section && isset($cache[$section][$id]) && $cache[$section][$id]['section'] != $section) {
             $cache[$section][$id] = null;
 
             return $cache[$section][$id];

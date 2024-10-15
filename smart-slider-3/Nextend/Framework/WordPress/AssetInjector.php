@@ -13,6 +13,7 @@ class AssetInjector {
     use SingletonTrait;
 
     private static $cssComment = '<!--n2css-->';
+    private static $jsComment = '<!--n2js-->';
 
     protected $js = '';
     protected $css = '';
@@ -42,7 +43,7 @@ class AssetInjector {
                 $this->outputBuffer->setExtraObStart(SMART_SLIDER_OB_START);
             }
 
-            $this->addInjectCSSComment();
+            $this->addInjectCSSJSComment();
 
             add_filter('wordpress_prepare_output', array(
                 $this,
@@ -118,6 +119,67 @@ class AssetInjector {
                 }
             }
 
+            if (!empty($this->js)) {
+                $n2jsPos = strpos($buffer, self::$jsComment);
+                if ($n2jsPos !== false) {
+                    $buffer   = substr_replace($buffer, $this->js, $n2jsPos, strlen(self::$jsComment));
+                    $this->js = '';
+                } else {
+                    $parts = preg_split('/<\/head[\s]*>/i', $buffer, 2);
+                    // There might be no head and it would result a notice.
+                    if (count($parts) == 2) {
+                        list($head, $body) = $parts;
+                        /**
+                         * We must tokenize the HTML comments in the head to prepare for condition CSS/scripts
+                         * Eg.: <!--[if lt IE 9]><link rel='stylesheet' href='ie8.css?ver=1.0' type='text/css' media='all'> <![endif]-->
+                         */
+                        $head = preg_replace_callback('/<!--.*?-->/s', array(
+                            $this,
+                            'tokenizeHead'
+                        ), $head);
+
+                        $head = preg_replace_callback('/<noscript>.*?<\/noscript>/s', array(
+                            $this,
+                            'tokenizeHead'
+                        ), $head);
+
+                        $lastStylesheetPosition = strrpos($head, "<link rel='stylesheet'");
+                        if ($lastStylesheetPosition === false) {
+                            $lastStylesheetPosition = strrpos($head, "<link rel=\"stylesheet\"");
+                            if ($lastStylesheetPosition === false) {
+                                $lastStylesheetPosition = strrpos($head, "<link");
+                            }
+                        }
+                        if ($lastStylesheetPosition !== false) {
+
+                            /**
+                             * Find the end of the tag <link tag
+                             */
+                            $lastStylesheetPositionEnd = strpos($head, ">", $lastStylesheetPosition);
+                            if ($lastStylesheetPositionEnd !== false) {
+
+                                /**
+                                 * Insert JS after the ending >
+                                 */
+                                $head     = substr_replace($head, $this->js, $lastStylesheetPositionEnd + 1, 0);
+                                $this->js = '';
+
+                                /**
+                                 * Restore HTML comments
+                                 */
+                                $head = preg_replace_callback('/<!--TOKEN([0-9]+)-->/', array(
+                                    $this,
+                                    'restoreHeadTokens'
+                                ), $head);
+
+                                $buffer = $head . '</head>' . $body;
+                            }
+
+                        }
+                    }
+                }
+            }
+
             if ($this->css != '' || $this->js != '') {
                 $parts = preg_split('/<\/head[\s]*>/', $buffer, 2);
 
@@ -156,11 +218,11 @@ class AssetInjector {
         return true;
     }
 
-    public function addInjectCSSComment() {
+    public function addInjectCSSJSComment() {
         if (!$this->useAlternativeAction) {
             add_action('wp_print_scripts', array(
                 $this,
-                'injectCSSComment'
+                'injectCSSJSComment'
             ));
         } else {
             /**
@@ -171,16 +233,16 @@ class AssetInjector {
              */
             add_action('admin_head', array(
                 $this,
-                'injectCSSComment'
+                'injectCSSJSComment'
             ));
         }
     }
 
-    public function removeInjectCSSComment() {
+    public function removeInjectCSSJSComment() {
         if (!$this->useAlternativeAction) {
             remove_action('wp_print_scripts', array(
                 $this,
-                'injectCSSComment'
+                'injectCSSJSComment'
             ));
         } else {
             /**
@@ -191,15 +253,16 @@ class AssetInjector {
              */
             remove_action('admin_head', array(
                 $this,
-                'injectCSSComment'
+                'injectCSSJSComment'
             ));
         }
     }
 
-    public function injectCSSComment() {
+    public function injectCSSJSComment() {
         static $once;
         if (!$once) {
             echo wp_kses(self::$cssComment, array());
+            echo wp_kses(self::$jsComment, array());
             $once = true;
         }
     }

@@ -1310,31 +1310,14 @@ class Storage {
             "value"        => array(
                 'name' => n2_('Curtain to left'),
                 'data' => array(
-                    'type'            => 'Flat',
-                    'rows'            => 1,
-                    'columns'         => 25,
-                    'tiles'           => array(
-                        'delay'    => .03,
-                        'sequence' => 'BackwardCol'
-                    ),
-                    'main'            => array(
-                        'type'     => 'next',
-                        'duration' => .35,
-                        'next'     => array(
-                            'ease'    => 'easeInQuart',
-                            'opacity' => "0",
-                            'xP'      => -100
-                        )
-                    ),
-                    'invert'          => array(
-                        'next' => array(
-                            'xP' => 100
-                        )
-                    ),
-                    'invertTiles'     => array(
-                        'sequence' => 'ForwardCol'
-                    ),
-                    'desktopOnly' => true
+                    'type'         => 'GL',
+                    'subType'      => 'GLSL5',
+                    'ease'         => 'linear',
+                    'tileDuration' => 0.6,
+                    'count'        => 25,
+                    'delay'        => 0.08,
+                    'invertX'      => 0,
+                    'invertY'      => 0
                 )
             )
         ));
@@ -1345,22 +1328,12 @@ class Storage {
             "value"        => array(
                 'name' => n2_('Puzzle'),
                 'data' => array(
-                    'type'            => 'Flat',
-                    'rows'            => 5,
-                    'columns'         => 7,
-                    'tiles'           => array(
-                        'delay'    => 1,
-                        'sequence' => 'Random'
-                    ),
-                    'main'            => array(
-                        'type'     => 'next',
-                        'duration' => 0.8,
-                        'next'     => array(
-                            'ease'    => 'easeInQuart',
-                            'opacity' => 0
-                        )
-                    ),
-                    'desktopOnly' => true
+                    'type'     => 'GL',
+                    'subType'  => 'GLSLPuzzle',
+                    'rows'     => 5,
+                    'columns'  => 7,
+                    'duration' => 0.6,
+                    'delay'    => 0.02
                 )
             )
         ));
@@ -1455,31 +1428,13 @@ class Storage {
             "value"        => array(
                 'name' => n2_('Curtain to bottom'),
                 'data' => array(
-                    'type'            => 'Flat',
-                    'rows'            => 25,
-                    'columns'         => 1,
-                    'tiles'           => array(
-                        'delay'    => .03,
-                        'sequence' => 'ForwardRow'
-                    ),
-                    'main'            => array(
-                        'type'     => 'next',
-                        'duration' => .35,
-                        'next'     => array(
-                            'ease'    => 'easeInQuart',
-                            'opacity' => "0",
-                            'yP'      => 100
-                        )
-                    ),
-                    'invert'          => array(
-                        'next' => array(
-                            'yP' => -100
-                        )
-                    ),
-                    'invertTiles'     => array(
-                        'sequence' => 'BackwardRow'
-                    ),
-                    'desktopOnly' => true
+                    'type'         => 'GL',
+                    'subType'      => 'GLSL6',
+                    'ease'         => 'linear',
+                    'tileDuration' => 0.6,
+                    'count'        => 25,
+                    'delay'        => 0.08,
+                    'invertY'      => 0
                 )
             )
         ));
@@ -1490,31 +1445,13 @@ class Storage {
             "value"        => array(
                 'name' => n2_('Curtain to top'),
                 'data' => array(
-                    'type'            => 'Flat',
-                    'rows'            => 25,
-                    'columns'         => 1,
-                    'tiles'           => array(
-                        'delay'    => .03,
-                        'sequence' => 'BackwardRow'
-                    ),
-                    'main'            => array(
-                        'type'     => 'next',
-                        'duration' => .35,
-                        'next'     => array(
-                            'ease'    => 'easeInQuart',
-                            'opacity' => "0",
-                            'yP'      => -100
-                        )
-                    ),
-                    'invert'          => array(
-                        'next' => array(
-                            'yP' => 100
-                        )
-                    ),
-                    'invertTiles'     => array(
-                        'sequence' => 'ForwardRow'
-                    ),
-                    'desktopOnly' => true
+                    'type'         => 'GL',
+                    'subType'      => 'GLSL6',
+                    'ease'         => 'linear',
+                    'tileDuration' => 0.6,
+                    'count'        => 25,
+                    'delay'        => 0.08,
+                    'invertY'      => 1
                 )
             )
         ));
@@ -1570,31 +1507,14 @@ class Storage {
             "value"        => array(
                 'name' => n2_('Curtain to right'),
                 'data' => array(
-                    'type'            => 'Flat',
-                    'rows'            => 1,
-                    'columns'         => 25,
-                    'tiles'           => array(
-                        'delay'    => .03,
-                        'sequence' => 'ForwardCol'
-                    ),
-                    'main'            => array(
-                        'type'     => 'next',
-                        'duration' => .35,
-                        'next'     => array(
-                            'ease'    => 'easeInQuart',
-                            'opacity' => "0",
-                            'xP'      => 100
-                        )
-                    ),
-                    'invert'          => array(
-                        'next' => array(
-                            'xP' => -100
-                        )
-                    ),
-                    'invertTiles'     => array(
-                        'sequence' => 'BackwardCol'
-                    ),
-                    'desktopOnly' => true
+                    'type'         => 'GL',
+                    'subType'      => 'GLSL5',
+                    'ease'         => 'linear',
+                    'tileDuration' => 0.6,
+                    'count'        => 25,
+                    'delay'        => 0.08,
+                    'invertX'      => 1,
+                    'invertY'      => 0
                 )
             )
         ));

@@ -7,6 +7,7 @@ namespace Nextend\SmartSlider3\Widget\Bullet\BulletTransition;
 use Nextend\Framework\Form\Element\OnOff;
 use Nextend\Framework\Form\Element\Select;
 use Nextend\Framework\Form\Element\Style;
+use Nextend\Framework\Form\Element\Text;
 use Nextend\Framework\Form\Fieldset\FieldsetRow;
 use Nextend\SmartSlider3\Form\Element\Group\WidgetPosition;
 use Nextend\SmartSlider3\Widget\Bullet\AbstractBullet;
@@ -47,6 +48,11 @@ class BulletTransition extends AbstractBullet {
             'mode'    => 'simple',
             'style2'  => 'sliderwidget-bullet-style',
             'preview' => 'SmartSliderAdminWidgetBulletTransition'
+        ));
+
+        new Text($row2, 'widget-bullet-aria-label', n2_('ARIA label'), n2_('Choose slide to display.'), array(
+            'tipLabel'       => n2_('ARIA label'),
+            'tipDescription' => n2_('ARIA label for the container element of bullets.')
         ));
     }
 

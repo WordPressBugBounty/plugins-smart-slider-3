@@ -171,6 +171,7 @@ class ComponentContent extends AbstractComponent {
         $this->createProperty('class', '');
         $this->createProperty('status');
         $this->createProperty('generatorvisible', '');
+        $this->createProperty('generatorvisible2', '');
 
         $this->placement->adminAttributes($this->attributes);
     }

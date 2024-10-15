@@ -45,7 +45,9 @@ class SmartSlider3PlatformWordPress extends AbstractSmartSlider3Platform {
         new WidgetHelper();
         new Shortcode();
 
-        new AdminHelper();
+        if (is_admin()) {
+            new AdminHelper();
+        }
 
         add_action('admin_head', function () {
 

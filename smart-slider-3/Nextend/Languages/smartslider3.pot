@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-04-08 14:12+0200\n"
+"POT-Creation-Date: 2024-09-24 16:20+0200\n"
 "PO-Revision-Date: 2020-03-10 19:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2007,6 +2007,9 @@ msgid "You can link your layer to another layer on the same level. This way your
 msgstr ""
 
 msgid "Hide when variable empty"
+msgstr ""
+
+msgid "Hide when variable not empty"
 msgstr ""
 
 msgid "Text scale"
@@ -4189,6 +4192,12 @@ msgid "You can set what separates the Tex bar Title and Description. This separa
 msgstr ""
 
 msgid "Bar full size"
+msgstr ""
+
+msgid "Choose slide to display."
+msgstr ""
+
+msgid "ARIA label for the container element of bullets."
 msgstr ""
 
 msgid "Shows on hover"

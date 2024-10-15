@@ -120,15 +120,26 @@ abstract class AbstractComponent {
     }
 
     public function isRenderAllowed() {
-        $generatorVisible = $this->data->get('generatorvisible', '');
-        if ($this->owner->isComponentVisible($generatorVisible) && !self::$isAdmin) {
-            $filled = $this->owner->fill($generatorVisible);
-            if (empty($filled)) {
-                return false;
+        $generatorVisible  = $this->data->get('generatorvisible', '');
+        $generatorVisible2 = $this->data->get('generatorvisible2', '');
+        $isAllowed         = true;
+        if (!self::$isAdmin) {
+            if ($this->owner->isComponentVisible($generatorVisible)) {
+                $filled = $this->owner->fill($generatorVisible);
+                if (empty($filled)) {
+                    $isAllowed = false;
+                }
+            }
+
+            if ($isAllowed && $this->owner->isComponentVisible($generatorVisible2)) {
+                $filled2 = $this->owner->fill($generatorVisible2);
+                if (!empty($filled2)) {
+                    $isAllowed = false;
+                }
             }
         }
 
-        return true;
+        return $isAllowed;
     }
 
     public abstract function render($isAdmin);
@@ -152,6 +163,7 @@ abstract class AbstractComponent {
         $this->createProperty('namesynced', 1);
         $this->createProperty('status');
         $this->createProperty('generatorvisible', '');
+        $this->createProperty('generatorvisible2', '');
 
         $this->placement->adminAttributes($this->attributes);
     }

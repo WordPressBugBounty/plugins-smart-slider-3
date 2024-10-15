@@ -57,6 +57,8 @@ class ItemHeadingFrontend extends AbstractItemFrontend {
     private function heading($type, $attributes, $content) {
         if (is_numeric($type) && $type > 0) {
             return Html::tag("h{$type}", $attributes, $content);
+        } else if ($type == "blockquote") {
+            return Html::tag("blockquote", $attributes, $content);
         }
 
         return Html::tag("div", $attributes, $content);

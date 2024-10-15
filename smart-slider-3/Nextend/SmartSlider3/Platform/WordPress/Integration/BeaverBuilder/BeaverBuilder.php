@@ -71,12 +71,12 @@ class BeaverBuilder {
          */
         add_action('fl_ajax_fl_builder_render_new_module_settings', array(
             AssetInjector::getInstance(),
-            'removeInjectCSSComment'
+            'removeInjectCSSJSComment'
         ), 0);
 
         add_action('fl_ajax_fl_builder_save', array(
             AssetInjector::getInstance(),
-            'removeInjectCSSComment'
+            'removeInjectCSSJSComment'
         ), 0);
     }
 

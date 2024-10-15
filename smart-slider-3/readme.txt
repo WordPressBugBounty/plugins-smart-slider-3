@@ -3,8 +3,8 @@ Contributors: nextendweb
 Tags: slider, wordpress slider, image slider, layer slider, responsive slider, slideshow, fullwidth slider, post slider, horizontal slider, vertical slider, photo slider, video slider
 Donate link: https://sites.fastspring.com/nextend/product/smartslider3donate
 Requires at least: 5.0
-Tested up to: 6.5
-Stable tag: 3.5.1.23
+Tested up to: 6.6.2
+Stable tag: 3.5.1.24
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -216,6 +216,19 @@ Of course! Smart Slider use protocol relative urls which works fine on http:// a
 9. Enhance your site with our FREE Layer Slider's stylish layers for a better user experience.
 
 == Changelog ==
+
+= 3.5.1.24 - 15. October 2024 =
+* Feature: Hide layer when variable is not empty option at dynamic slides.
+* Feature: Asset (css, js) injector code improved.
+* Feature: Active thumbnails will get aria-current="true" attribute.
+* Feature: Container element of bullets will get role="group" attribute.
+* Feature: Aria-label option for the container element of bullets.
+* Feature: Blockquote option for Heading layer.
+* Fix: Some background animations are buggy in Chrome, so we rewrote them to use a different animation system.
+* Fix: Post IDs option cleared the given post's cache at every page visit.
+* Fix: WordPress free installer will include unminified js and css files.
+* Fix: Generic font family names won't have quotemarks around them.
+* Fix: Autoplay button didn't have width and height attributes.
 
 = 3.5.1.23 - 11. April 2024 =
 * Fix: At WordPress Posts generator if you have a meta data or ACF data with a name already used as a variable, it can get overwritten.

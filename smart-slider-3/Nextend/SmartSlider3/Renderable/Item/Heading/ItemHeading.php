@@ -151,13 +151,14 @@ class ItemHeading extends AbstractItem {
 
         new Select($settings, 'priority', 'Tag', 'div', array(
             'options' => array(
-                'div' => 'div',
-                '1'   => 'H1',
-                '2'   => 'H2',
-                '3'   => 'H3',
-                '4'   => 'H4',
-                '5'   => 'H5',
-                '6'   => 'H6'
+                'div'        => 'div',
+                '1'          => 'H1',
+                '2'          => 'H2',
+                '3'          => 'H3',
+                '4'          => 'H4',
+                '5'          => 'H5',
+                '6'          => 'H6',
+                'blockquote' => 'blockquote'
             )
         ));
 
