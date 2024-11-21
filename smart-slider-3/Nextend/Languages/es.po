@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-06-09 14:38+0200\n"
-"PO-Revision-Date: 2023-08-12 15:51-0300\n"
+"POT-Creation-Date: 2024-09-24 16:20+0200\n"
+"PO-Revision-Date: 2024-09-28 09:45-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: ;n2_;n2_e;n2_n:1,2;n2_en:1,2;n2_x:1,2c;n2_ex:1,2c\n"
 "X-Poedit-Flags-xgettext: --no-location\n"
@@ -27,8 +27,14 @@ msgstr ""
 msgid "You are not allowed to upload!"
 msgstr "¡No tienes permisos para subir archivos!"
 
+msgid "You are not allowed to upload this filetype!"
+msgstr "¡No tienes permisos para subir archivos de este tipo!"
+
 msgid "Folder is missing!"
 msgstr "¡No se encuentra la carpeta!"
+
+msgid "You are not allowed to upload a file with different extension ("
+msgstr "¡No tienes permisos para subir archivos con extensiones diferentes ("
 
 msgid "Menu item"
 msgstr "Ítem del menú"
@@ -2239,6 +2245,9 @@ msgstr ""
 msgid "Hide when variable empty"
 msgstr "Ocultar cuando la variable este vacía"
 
+msgid "Hide when variable not empty"
+msgstr "Ocultar cuando la variable no esté vacía"
+
 msgid "Text scale"
 msgstr "Escalar"
 
@@ -4006,6 +4015,9 @@ msgstr ""
 "Oculta la imagen de perfil del autor, pero solo si el propietario del video "
 "lo permite. "
 
+msgid "Iframe title"
+msgstr "Título del iframe"
+
 msgid "Play button"
 msgstr "Botón reproducir"
 
@@ -4735,6 +4747,12 @@ msgstr ""
 msgid "Bar full size"
 msgstr "Barra de tamaño completo"
 
+msgid "Choose slide to display."
+msgstr "Selecciona el slide para mostrar."
+
+msgid "ARIA label for the container element of bullets."
+msgstr "Etiqueta ARIA para el elemento contenedor de viñetas."
+
 msgid "Shows on hover"
 msgstr "Mostrar al desplazar el ratón por encima"
 
@@ -5022,19 +5040,6 @@ msgstr ""
 msgid "No options given"
 msgstr "No se ingresaron opciones"
 
-msgid "The secret is empty. Please insert that value too!"
-msgstr "¡El texto secreto está vacío. Por favor ingresa ese valor!"
-
-msgid "The App ID is empty. Please insert that value too!"
-msgstr "¡El ID de la app está vacío. Por favor ingresa ese valor!"
-
-msgid ""
-"The Facebook generator will get deprecated soon, so you shouldn't use it "
-"anymore!"
-msgstr ""
-"El generador de Facebook será descontinuado muy pronto, ¡y no podrás "
-"utilizarlo más!"
-
 #, php-format
 msgid ""
 "%1$s allows HTTPS Redirect URIs only! You must move your site to HTTPS in "
@@ -5053,87 +5058,20 @@ msgstr ""
 "%2$s Consulta la documentación %3$s para conocer como configurar tu "
 "aplicación de %1$s."
 
-msgctxt "Facebook app permission"
-msgid "pages read engagement"
-msgstr "pages read engagement"
-
-msgid "Pages read engagement permission"
-msgstr "Administrar los permisos de lectura de las páginas"
-
-msgid ""
-"You need \"pages_read_engagement\" permission if you want to access datas of "
-"Facebook pages, where you are an administrator. For other pages you still "
-"need to turn this option on, but request access to \"Page Public Content "
-"Access\" within your App."
-msgstr ""
-"Necesitas el permiso \"pages_read_engagement\" si quieres acceder a los "
-"datos de las páginas de Facebook de la que eres el administrador. Para las "
-"otras páginas aún necesitas activar esta opción, pero además solicitar "
-"acceso a \"Acceso de Contenido Público de la Página\" en las opciones de tu "
-"App."
-
-msgctxt "Facebook app permission"
-msgid "user photos"
-msgstr "fotos de los usuarios"
-
-msgid "User photos permission"
-msgstr "Permiso de fotos de los usuarios"
-
-msgid ""
-"You need \"user_photos\" permission to access photos of users, except your "
-"own user."
-msgstr ""
-"Necesitas el permiso \"user_photos\" para acceder a las fotos de los "
-"usuarios, a excepción de tu propio usuario."
-
 msgid "Token"
 msgstr "Token"
 
 msgid "Callback url"
 msgstr "URL Callback"
 
-msgid "The token expired. Please request new token! "
-msgstr "El token expiró. Por favor solicite uno nuevo. "
+msgid "The key and secret is not valid!"
+msgstr "¡La clave y la palabra secreta no son válidas!"
 
 msgid "Request token"
 msgstr "Solicitar token"
 
-msgid "Facebook photos or posts on your page"
-msgstr "Publicaciones y fotos de Facebook en tu página"
-
-msgid "Photos by album"
-msgstr "Fotos por album"
-
-msgid "Posts by page"
-msgstr "Publicar por página"
-
-msgid "User or page"
-msgstr "Usuario ó página"
-
 msgid "Album"
 msgstr "Album"
-
-msgctxt "Facebook generator type"
-msgid "Facebook posts"
-msgstr "Publicaciones de Facebook"
-
-msgid "Page"
-msgstr "Página"
-
-msgid "Feed"
-msgstr "Feed"
-
-msgid "Remove special characters"
-msgstr "Remover caracteres especiales"
-
-msgid "Exclude Types"
-msgstr "Excluir tipos"
-
-msgid "Separate the types by a comma. E.g.: share,album"
-msgstr "Separa los tipos con una coma. Ejemplo: share,album"
-
-msgid "The key and secret is not valid!"
-msgstr "¡La clave y la palabra secreta no son válidas!"
 
 msgid "There are no photos in this album!"
 msgstr "¡No hay fotos en este álbum!"
@@ -5241,6 +5179,12 @@ msgstr ""
 "Dirección incorrecta. Esta es la dirección de la carpeta de medios y subida "
 "de archivos por defecto, trata navegar desde aquí:"
 
+msgid "The secret is empty. Please insert that value too!"
+msgstr "¡El texto secreto está vacío. Por favor ingresa ese valor!"
+
+msgid "The App ID is empty. Please insert that value too!"
+msgstr "¡El ID de la app está vacío. Por favor ingresa ese valor!"
+
 msgid "The App ID and the Secret is empty!"
 msgstr "¡Los parámetros \"App ID\" y \"Secret\" están vacíos!"
 
@@ -5251,6 +5195,12 @@ msgid "Access token was not returned.Please check the credentials!"
 msgstr ""
 "El token de acceso no devolvió ningún resultado. ¡Por favor comprueba las "
 "credenciales!"
+
+msgid "State does not match!"
+msgstr "¡El estado no coincide!"
+
+msgid "The token expired. Please request new token! "
+msgstr "El token expiró. Por favor solicite uno nuevo. "
 
 msgid "The token expired. Please request new token!"
 msgstr "¡El token expiró. Por favor solicite uno nuevo!"
@@ -5263,6 +5213,9 @@ msgstr "Actualizar token"
 
 msgid "Refresh"
 msgstr "Recargar"
+
+msgid "State or code parameter is empty!"
+msgstr "¡El estado o el parámetro de código está vacío!"
 
 msgid "Album loading method"
 msgstr "Método de carga del álbum"
@@ -5335,9 +5288,6 @@ msgstr "CSV desde una url"
 
 msgid "CSV from input"
 msgstr "CSV desde el ingreso de texto"
-
-msgid "View tweet"
-msgstr "Ver tweet"
 
 msgid "Comments"
 msgstr "Comentarios"
@@ -5664,6 +5614,9 @@ msgstr "Ver imagen"
 
 msgid "All day event"
 msgstr "Evento todo el día"
+
+msgid "default"
+msgstr "por defecto"
 
 msgid "Fallback language"
 msgstr "Lenguaje de resguardo (fallback)"
@@ -6477,9 +6430,6 @@ msgstr "Url del iframe"
 msgid "You can disable the scroll on the iframe content."
 msgstr "Puedes desactivar el desplazamiento para el contenido del iframe."
 
-msgid "Iframe title"
-msgstr "Título del iframe"
-
 msgid "Image area"
 msgstr "Área de la imagen"
 
@@ -6844,6 +6794,80 @@ msgstr "Color de la pista"
 
 msgid "Bar color"
 msgstr "Color de la barra"
+
+#~ msgid ""
+#~ "The Facebook generator will get deprecated soon, so you shouldn't use it "
+#~ "anymore!"
+#~ msgstr ""
+#~ "El generador de Facebook será descontinuado muy pronto, ¡y no podrás "
+#~ "utilizarlo más!"
+
+#~ msgctxt "Facebook app permission"
+#~ msgid "pages read engagement"
+#~ msgstr "pages read engagement"
+
+#~ msgid "Pages read engagement permission"
+#~ msgstr "Administrar los permisos de lectura de las páginas"
+
+#~ msgid ""
+#~ "You need \"pages_read_engagement\" permission if you want to access datas "
+#~ "of Facebook pages, where you are an administrator. For other pages you "
+#~ "still need to turn this option on, but request access to \"Page Public "
+#~ "Content Access\" within your App."
+#~ msgstr ""
+#~ "Necesitas el permiso \"pages_read_engagement\" si quieres acceder a los "
+#~ "datos de las páginas de Facebook de la que eres el administrador. Para "
+#~ "las otras páginas aún necesitas activar esta opción, pero además "
+#~ "solicitar acceso a \"Acceso de Contenido Público de la Página\" en las "
+#~ "opciones de tu App."
+
+#~ msgctxt "Facebook app permission"
+#~ msgid "user photos"
+#~ msgstr "fotos de los usuarios"
+
+#~ msgid "User photos permission"
+#~ msgstr "Permiso de fotos de los usuarios"
+
+#~ msgid ""
+#~ "You need \"user_photos\" permission to access photos of users, except "
+#~ "your own user."
+#~ msgstr ""
+#~ "Necesitas el permiso \"user_photos\" para acceder a las fotos de los "
+#~ "usuarios, a excepción de tu propio usuario."
+
+#~ msgid "Facebook photos or posts on your page"
+#~ msgstr "Publicaciones y fotos de Facebook en tu página"
+
+#~ msgid "Photos by album"
+#~ msgstr "Fotos por album"
+
+#~ msgid "Posts by page"
+#~ msgstr "Publicar por página"
+
+#~ msgid "User or page"
+#~ msgstr "Usuario ó página"
+
+#~ msgctxt "Facebook generator type"
+#~ msgid "Facebook posts"
+#~ msgstr "Publicaciones de Facebook"
+
+#~ msgid "Page"
+#~ msgstr "Página"
+
+#~ msgid "Feed"
+#~ msgstr "Feed"
+
+#~ msgid "Remove special characters"
+#~ msgstr "Remover caracteres especiales"
+
+#~ msgid "Exclude Types"
+#~ msgstr "Excluir tipos"
+
+#~ msgid "Separate the types by a comma. E.g.: share,album"
+#~ msgstr "Separa los tipos con una coma. Ejemplo: share,album"
+
+#~ msgid "View tweet"
+#~ msgstr "Ver tweet"
 
 #~ msgid "JetPack Photon image optimizer"
 #~ msgstr "Optimizador de imagen JetPack Photon"

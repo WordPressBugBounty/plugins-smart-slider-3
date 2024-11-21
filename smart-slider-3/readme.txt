@@ -3,8 +3,8 @@ Contributors: nextendweb
 Tags: slider, wordpress slider, image slider, layer slider, responsive slider, slideshow, fullwidth slider, post slider, horizontal slider, vertical slider, photo slider, video slider
 Donate link: https://sites.fastspring.com/nextend/product/smartslider3donate
 Requires at least: 5.0
-Tested up to: 6.6.2
-Stable tag: 3.5.1.24
+Tested up to: 6.7
+Stable tag: 3.5.1.25
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -217,7 +217,11 @@ Of course! Smart Slider use protocol relative urls which works fine on http:// a
 
 == Changelog ==
 
-= 3.5.1.24 - 15. October 2024 =
+= 3.5.1.25 - 21. November 2024 =
+* Feature: Improved accessibility.
+* Other: Black Friday sale notification added.
+
+= 3.5.1.24 - 30. September 2024 =
 * Feature: Hide layer when variable is not empty option at dynamic slides.
 * Feature: Asset (css, js) injector code improved.
 * Feature: Active thumbnails will get aria-current="true" attribute.

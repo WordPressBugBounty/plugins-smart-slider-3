@@ -248,7 +248,11 @@ class PostsCustomPosts extends AbstractGenerator {
             $tax_array = array();
             foreach ($taxonomies as $tax) {
                 $parts = explode('|*|', $tax);
-                if (!is_array(@$tax_array[$parts[0]]) || !in_array($parts[1], $tax_array[$parts[0]])) {
+                if (!isset($tax_array[$parts[0]])) {
+                    $tax_array[$parts[0]] = array();
+                }
+
+                if (!in_array($parts[1], $tax_array[$parts[0]])) {
                     $tax_array[$parts[0]][] = $parts[1];
                 }
             }
