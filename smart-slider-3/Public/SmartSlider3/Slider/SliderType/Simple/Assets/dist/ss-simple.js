@@ -763,7 +763,7 @@ _ready(function () {
                     this._currentBackgroundAnimation._preSetup();
                 }
             }
-        } else {
+        } else if (this._currentBackgroundAnimation !== false) {
             adjustedTiming.outDelay += 0.1;
         }
 
@@ -841,7 +841,7 @@ _ready(function () {
                     this._currentBackgroundAnimation._preSetup();
                 }
             }
-        } else {
+        } else if (this._currentBackgroundAnimation !== false) {
             adjustedTiming.outDelay += 0.1;
         }
 
@@ -981,7 +981,7 @@ _ready(function () {
                     this._currentBackgroundAnimation._preSetup();
                 }
             }
-        } else {
+        } else if (this._currentBackgroundAnimation !== false) {
             adjustedTiming.outDelay += 0.1;
         }
 

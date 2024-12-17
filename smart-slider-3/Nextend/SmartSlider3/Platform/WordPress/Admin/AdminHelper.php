@@ -17,11 +17,6 @@ class AdminHelper {
 
     public function __construct() {
 
-        add_action('admin_init', function () {
-            require_once dirname(__FILE__) . '/free/notice.php';
-        
-        });
-
         add_action('init', array(
             $this,
             'action_init'

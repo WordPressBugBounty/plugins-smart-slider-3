@@ -41,14 +41,13 @@ class DiviExtensionSmartSlider3 extends DiviExtension {
 
         wp_enqueue_style("{$this->name}-admin-styles", $styles_url, array(), $this->version);
 
-        ?>
-        <script>
-            if (typeof localStorage !== 'undefined') {
-                localStorage.removeItem('et_pb_templates_et_pb_nextend_smart_slider_3');
-                localStorage.removeItem('et_pb_templates_et_pb_nextend_smart_slider_3_fullwidth');
-            }
-        </script>
-        <?php
+        wp_register_script("{$this->name}-admin-script", "");
+        wp_add_inline_script("{$this->name}-admin-script", '
+            if (typeof localStorage !== "undefined") {
+                localStorage.removeItem("et_pb_templates_et_pb_nextend_smart_slider_3");
+                localStorage.removeItem("et_pb_templates_et_pb_nextend_smart_slider_3_fullwidth");
+            }');
+        wp_enqueue_script("{$this->name}-admin-script");
     }
 
     public function clearDiviCache() {

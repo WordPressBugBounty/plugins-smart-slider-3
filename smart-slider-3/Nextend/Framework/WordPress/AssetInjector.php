@@ -235,6 +235,11 @@ class AssetInjector {
                 $this,
                 'injectCSSJSComment'
             ));
+
+            add_action('customize_controls_print_scripts', array(
+                $this,
+                'injectCSSJSComment'
+            ));
         }
     }
 
@@ -252,6 +257,11 @@ class AssetInjector {
              * The Customizer fires the wp_print_scripts action inside a the wp.customizeWidgets.initialize script.
              */
             remove_action('admin_head', array(
+                $this,
+                'injectCSSJSComment'
+            ));
+
+            remove_action('customize_controls_print_scripts', array(
                 $this,
                 'injectCSSJSComment'
             ));
