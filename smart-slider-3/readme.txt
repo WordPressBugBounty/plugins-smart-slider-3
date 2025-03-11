@@ -3,8 +3,8 @@ Contributors: nextendweb
 Tags: slider, wordpress slider, image slider, layer slider, responsive slider, slideshow, fullwidth slider, post slider, horizontal slider, vertical slider, photo slider, video slider
 Donate link: https://sites.fastspring.com/nextend/product/smartslider3donate
 Requires at least: 5.0
-Tested up to: 6.7.1
-Stable tag: 3.5.1.26
+Tested up to: 6.7.2
+Stable tag: 3.5.1.27
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -216,6 +216,11 @@ Of course! Smart Slider use protocol relative urls which works fine on http:// a
 9. Enhance your site with our FREE Layer Slider's stylish layers for a better user experience.
 
 == Changelog ==
+
+= 3.5.1.27 - 11. March 2025 =
+* Feature: The latest background animation limitations are hardcoded now, to avoid wrong usage.
+* Feature: Title attribute for slide thumbnail.
+* Fix: At WordPress Posts generators taxonomies with the same name overwrote each other.
 
 = 3.5.1.26 - 9. December 2024 =
 * Fix: Customizer breaks in some cases.

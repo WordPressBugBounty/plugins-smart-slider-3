@@ -44,7 +44,7 @@ class PostsTaxonomies extends Select {
                     foreach ($terms as $term) {
                         $options[$taxonomy->name . $this->postSeparator . $term->term_id] = '- ' . $term->name;
                     }
-                    $this->optgroup[$taxonomy->label] = $options;
+                    $this->optgroup[$taxonomy->name] = $options;
                 }
             }
         }

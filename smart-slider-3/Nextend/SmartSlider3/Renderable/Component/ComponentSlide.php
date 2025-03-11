@@ -86,6 +86,7 @@ class ComponentSlide extends AbstractComponent {
         $this->createProperty('description', '');
         $this->createProperty('thumbnail', '');
         $this->createProperty('thumbnailAlt', '');
+        $this->createProperty('thumbnailTitle', '');
         $this->createProperty('thumbnailType', 'default');
 
         $this->createProperty('static-slide', 0);

@@ -249,9 +249,16 @@ class ThumbnailBasicFrontend extends AbstractWidgetFrontend {
 
             if ($showThumbnail) {
 
-                $dotHTML[] = $slide->renderThumbnailImage($width, $height, array(
-                    'alt' => $slide->getThumbnailAltDynamic()
-                ));
+                $thumbnailAttributes = array(
+                    'alt' => $slide->getThumbnailAltDynamic(),
+                );
+
+                $title = $slide->getThumbnailTitleDynamic();
+                if ($title) {
+                    $thumbnailAttributes['title'] = $title;
+                }
+
+                $dotHTML[] = $slide->renderThumbnailImage($width, $height, $thumbnailAttributes);
 
                 $thumbnailType = $slide->getThumbnailType();
                 if (isset(self::$thumbnailTypes[$thumbnailType])) {

@@ -1310,14 +1310,15 @@ class Storage {
             "value"        => array(
                 'name' => n2_('Curtain to left'),
                 'data' => array(
-                    'type'         => 'GL',
-                    'subType'      => 'GLSL5',
-                    'ease'         => 'linear',
-                    'tileDuration' => 0.6,
-                    'count'        => 25,
-                    'delay'        => 0.08,
-                    'invertX'      => 0,
-                    'invertY'      => 0
+                    'type'                   => 'GL',
+                    'subType'                => 'GLSL5',
+                    'ease'                   => 'linear',
+                    'tileDuration'           => 0.6,
+                    'count'                  => 25,
+                    'delay'                  => 0.08,
+                    'invertX'                => 0,
+                    'invertY'                => 0,
+                    'allowedBackgroundModes' => array('fill')
                 )
             )
         ));
@@ -1328,12 +1329,13 @@ class Storage {
             "value"        => array(
                 'name' => n2_('Puzzle'),
                 'data' => array(
-                    'type'     => 'GL',
-                    'subType'  => 'GLSLPuzzle',
-                    'rows'     => 5,
-                    'columns'  => 7,
-                    'duration' => 0.6,
-                    'delay'    => 0.02
+                    'type'                   => 'GL',
+                    'subType'                => 'GLSLPuzzle',
+                    'rows'                   => 5,
+                    'columns'                => 7,
+                    'duration'               => 0.6,
+                    'delay'                  => 0.02,
+                    'allowedBackgroundModes' => array('fill')
                 )
             )
         ));
@@ -1428,13 +1430,14 @@ class Storage {
             "value"        => array(
                 'name' => n2_('Curtain to bottom'),
                 'data' => array(
-                    'type'         => 'GL',
-                    'subType'      => 'GLSL6',
-                    'ease'         => 'linear',
-                    'tileDuration' => 0.6,
-                    'count'        => 25,
-                    'delay'        => 0.08,
-                    'invertY'      => 0
+                    'type'                   => 'GL',
+                    'subType'                => 'GLSL6',
+                    'ease'                   => 'linear',
+                    'tileDuration'           => 0.6,
+                    'count'                  => 25,
+                    'delay'                  => 0.08,
+                    'invertY'                => 0,
+                    'allowedBackgroundModes' => array('fill')
                 )
             )
         ));
@@ -1445,13 +1448,14 @@ class Storage {
             "value"        => array(
                 'name' => n2_('Curtain to top'),
                 'data' => array(
-                    'type'         => 'GL',
-                    'subType'      => 'GLSL6',
-                    'ease'         => 'linear',
-                    'tileDuration' => 0.6,
-                    'count'        => 25,
-                    'delay'        => 0.08,
-                    'invertY'      => 1
+                    'type'                   => 'GL',
+                    'subType'                => 'GLSL6',
+                    'ease'                   => 'linear',
+                    'tileDuration'           => 0.6,
+                    'count'                  => 25,
+                    'delay'                  => 0.08,
+                    'invertY'                => 1,
+                    'allowedBackgroundModes' => array('fill')
                 )
             )
         ));
@@ -1507,14 +1511,15 @@ class Storage {
             "value"        => array(
                 'name' => n2_('Curtain to right'),
                 'data' => array(
-                    'type'         => 'GL',
-                    'subType'      => 'GLSL5',
-                    'ease'         => 'linear',
-                    'tileDuration' => 0.6,
-                    'count'        => 25,
-                    'delay'        => 0.08,
-                    'invertX'      => 1,
-                    'invertY'      => 0
+                    'type'                   => 'GL',
+                    'subType'                => 'GLSL5',
+                    'ease'                   => 'linear',
+                    'tileDuration'           => 0.6,
+                    'count'                  => 25,
+                    'delay'                  => 0.08,
+                    'invertX'                => 1,
+                    'invertY'                => 0,
+                    'allowedBackgroundModes' => array('fill')
                 )
             )
         ));

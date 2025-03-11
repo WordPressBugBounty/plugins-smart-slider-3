@@ -1232,3 +1232,12 @@ ss3-loader:after {
         transform: rotate(360deg);
     }
 }
+
+/**
+ * Safari rendering bug
+ * @see SSDEV-4038
+ */
+.n2-ss-slider .n2-input, .n2-ss-slider .n2-ss-item-counter-counting-div {
+    -webkit-transform: translate3d(0, 0, 0);
+}
+

@@ -71,15 +71,15 @@ class ET_Builder_Module_SmartSlider3 extends ET_Builder_Module {
 
                 $subChoices = array();
                 if (!empty($slider['alias'])) {
-                    $subChoices[$slider['alias']] = '-- ' . n2_('Whole group') . ' - ' . $slider['title'] . ' #Alias: ' . $slider['alias'];
+                    $subChoices[$slider['alias']] = '― ' . n2_('Whole group') . ' - ' . $slider['title'] . ' #Alias: ' . $slider['alias'];
                 }
-                $subChoices[$slider['id']] = '-- ' . n2_('Whole group') . ' - ' . $slider['title'] . ' #' . $slider['id'];
+                $subChoices[$slider['id']] = '― ' . n2_('Whole group') . ' - ' . $slider['title'] . ' #' . $slider['id'];
 
                 foreach ($slidersModel->getAll($slider['id'], 'published') as $_slider) {
                     if (!empty($_slider['alias'])) {
-                        $subChoices[$_slider['alias']] = '-- ' . $_slider['title'] . ' #Alias: ' . $_slider['alias'];
+                        $subChoices[$_slider['alias']] = '― ' . $_slider['title'] . ' #Alias: ' . $_slider['alias'];
                     }
-                    $subChoices[$_slider['id']] = '-- ' . $_slider['title'] . ' #' . $_slider['id'];
+                    $subChoices[$_slider['id']] = '― ' . $_slider['title'] . ' #' . $_slider['id'];
                 }
 
                 $options[$slider['title'] . ' #' . $slider['id']] = $subChoices;

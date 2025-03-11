@@ -36588,6 +36588,7 @@ _N2.d('ComponentAbstract', dependencies, function () {
                 description: $('#layerslide-description'),
                 thumbnail: $('#layerslide-thumbnail'),
                 thumbnailAlt: $('#layerslide-thumbnailAlt'),
+                thumbnailTitle: $('#layerslide-thumbnailTitle'),
 
                 'record-slides': $('#layerslide-slide-generator-slides'),
 
@@ -36625,6 +36626,7 @@ _N2.d('ComponentAbstract', dependencies, function () {
         componentSettings.fragmentEditor.editor.generator.registerField(registry.description);
         componentSettings.fragmentEditor.editor.generator.registerField(registry.thumbnail);
         componentSettings.fragmentEditor.editor.generator.registerField(registry.thumbnailAlt);
+        componentSettings.fragmentEditor.editor.generator.registerField(registry.thumbnailTitle);
         componentSettings.fragmentEditor.editor.generator.registerField(registry.backgroundImage);
         componentSettings.fragmentEditor.editor.generator.registerField(registry.backgroundFocusX);
         componentSettings.fragmentEditor.editor.generator.registerField(registry.backgroundFocusY);
@@ -36661,6 +36663,7 @@ _N2.d('ComponentAbstract', dependencies, function () {
 
         this.createProperty('thumbnail', '', $layer);
         this.createProperty('thumbnailAlt', '', $layer);
+        this.createProperty('thumbnailTitle', '', $layer);
         this.createProperty('thumbnailType', 'default', $layer);
 
         this.createProperty('static-slide', 0, $layer);

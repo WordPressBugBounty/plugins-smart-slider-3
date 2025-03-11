@@ -64,10 +64,14 @@ class LayerWindowSettingsSlide extends AbstractLayerWindowSettings {
         new FieldImage($general, 'slide-thumbnail', n2_('Thumbnail'), '', array(
             'width'         => 220,
             'relatedFields' => array(
-                'layerslide-thumbnailAlt'
+                'layerslide-thumbnailAlt',
+                'layerslide-thumbnailTitle',
             )
         ));
         new Text($general, 'slide-thumbnailAlt', n2_('Thumbnail alt') . ' [SEO]', '', array(
+            'style' => "width:133px;"
+        ));
+        new Text($general, 'slide-thumbnailTitle', n2_('Thumbnail title') . ' [SEO]', '', array(
             'style' => "width:133px;"
         ));
 

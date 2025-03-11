@@ -379,6 +379,11 @@ class Slide extends AbstractRenderableOwner {
                     'class'   => 'n2-ss-slide-thumbnail'
                 ));
 
+                $title = esc_attr($this->getThumbnailTitleDynamic());
+                if ($title) {
+                    $attributes['title'] = $title;
+                }
+
                 $this->html .= Html::image($this->sliderObject->features->optimize->optimizeThumbnail($thumbnail), esc_attr($this->getThumbnailAltDynamic()), $attributes);
             }
         }
@@ -684,6 +689,10 @@ class Slide extends AbstractRenderableOwner {
         }
 
         return $alt;
+    }
+
+    public function getThumbnailTitleDynamic() {
+        return $this->fill($this->parameters->get('thumbnailTitle'));
     }
 
     public function getLightboxImage() {
