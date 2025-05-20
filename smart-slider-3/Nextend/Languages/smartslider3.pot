@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-09-24 16:20+0200\n"
+"POT-Creation-Date: 2025-05-12 10:59+0200\n"
 "PO-Revision-Date: 2020-03-10 19:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2093,6 +2093,9 @@ msgstr ""
 msgid "Thumbnail alt"
 msgstr ""
 
+msgid "Thumbnail title"
+msgstr ""
+
 msgid "Custom lightbox image"
 msgstr ""
 
@@ -2566,10 +2569,10 @@ msgstr ""
 msgid "Preview in new window"
 msgstr ""
 
-msgid "Lightbox videos in new tab on Mobile"
+msgid "Lightbox videos in new tab on Mobile/Tablet"
 msgstr ""
 
-msgid "Opens the lightbox videos in the YouTube app to avoid the mobile disabling the video."
+msgid "Opens lightbox videos in their app to avoid the mobile or tablet disabling the video."
 msgstr ""
 
 msgid "YouTube and Vimeo privacy enhanced mode"
@@ -4619,9 +4622,6 @@ msgid "Load first images only"
 msgstr ""
 
 msgid "Load album images separately"
-msgstr ""
-
-msgid "Load Album images as record data"
 msgstr ""
 
 msgid "JSON from url"

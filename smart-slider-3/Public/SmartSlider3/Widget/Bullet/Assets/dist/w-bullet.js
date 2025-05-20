@@ -620,7 +620,6 @@ _ready(function () {
 
             var dot = this.slider.currentSlide.ssdot;
             _NodeAddClass(dot, 'n2-active');
-            _NodeRemoveAttribute(dot, 'tabindex');
             _NodeSetAttribute(dot, 'aria-current', 'true');
         }
 
@@ -636,13 +635,11 @@ _ready(function () {
             for (var i = 0; i < this._dots.length; i++) {
                 dot = this._dots[i];
                 _NodeRemoveClass(dot, 'n2-active');
-                _NodeSetAttribute(dot, 'tabindex', 0);
                 _NodeRemoveAttribute(dot, 'aria-current');
             }
 
             dot = e.detail.targetSlide.ssdot || e.detail.targetSlide.group.ssdot;
             _NodeAddClass(dot, 'n2-active');
-            _NodeRemoveAttribute(dot, 'tabindex');
             _NodeSetAttribute(dot, 'aria-current', 'true');
         }
     };

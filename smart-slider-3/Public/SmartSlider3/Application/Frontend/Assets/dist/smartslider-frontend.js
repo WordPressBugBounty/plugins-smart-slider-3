@@ -1643,7 +1643,7 @@ _N2.d('SmartSliderAbstract', function () {
         this.load.start();
 
         _addEventListener(this.sliderElement, 'keydown', function (event) {
-            if (event.code === 'Space' || event.code === 'Enter') {
+            if (event.code === 'Space' || event.code === 'Enter' || event.code === 'NumpadEnter') {
                 if (event.target.matches('[role="button"],[tabindex]') && event.target.matches(':not(a,input,select,textarea)')) {
                     event.preventDefault();
 
@@ -1796,18 +1796,20 @@ _N2.d('SmartSliderAbstract', function () {
                     this.overrideStarterSlideIndex(window['ss' + this.id]);
                 }
             } else {
-                if (!this.isAdmin && this.parameters.maintainSession && window.localStorage !== undefined) {
+
+                if (this.parameters.maintainSession && window.localStorage !== undefined) {
 
                     var sessionIndex = window.localStorage.getItem('ss-' + this.id);
                     this.overrideStarterSlideIndex(sessionIndex);
-
-                    _addEventListener(this.sliderElement, 'mainAnimationComplete', (function (e) {
-                        window.localStorage.setItem('ss-' + this.id, e.detail.currentSlideIndex);
-                    }).bind(this));
                 } else {
-
                     this.finalizeStarterSlideComplete(realStarterSlide);
                 }
+            }
+
+            if (this.parameters.maintainSession && window.localStorage !== undefined) {
+                _addEventListener(this.sliderElement, 'mainAnimationComplete', (function (e) {
+                    window.localStorage.setItem('ss-' + this.id, e.detail.currentSlideIndex);
+                }).bind(this));
             }
         }
     };
@@ -3245,7 +3247,7 @@ _N2.d('Stages', function () {
 
                 _addEventListener(window, 'hashchange', (function () {
                     var anchorTarget = this.getAnchor();
-                    if (anchorTarget > 0) {
+                    if (anchorTarget && Number.isInteger(anchorTarget) && anchorTarget > 0) {
 
                         if (this.___slider.responsive.parameters.focusUser === 1) {
                             /**
@@ -3293,7 +3295,7 @@ _N2.d('Stages', function () {
     SmartSliderControlAlias.prototype.switchOnLoad = function () {
 
         var anchorTarget = this.getAnchor();
-        if (anchorTarget > 0) {
+        if (anchorTarget && Number.isInteger(anchorTarget) && anchorTarget > 0) {
             var slideIndex = anchorTarget - 1,
                 slider = window['n2-ss-' + this.___slider.id];
 
@@ -3308,6 +3310,11 @@ _N2.d('Stages', function () {
                 }
             } else {
                 window['ss' + this.___slider.id] = slideIndex;
+            }
+
+
+            if (this.___slider.parameters.maintainSession && window.localStorage !== undefined && slideIndex <= this.___slider.visibleSlides.length) {
+                window.localStorage.setItem('ss-' + this.___slider.id, slideIndex);
             }
 
             this.replaceHash();

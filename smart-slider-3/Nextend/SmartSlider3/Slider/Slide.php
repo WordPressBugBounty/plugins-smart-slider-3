@@ -885,11 +885,8 @@ class Slide extends AbstractRenderableOwner {
         }
 
         $attributes['src']     = ResourceTranslator::toUrl($src);
-        $originalThumbnailSize = FastImageSize::getSize($src);
-        if ($originalThumbnailSize) {
-            $attributes['width']  = $originalThumbnailSize['width'];
-            $attributes['height'] = $originalThumbnailSize['height'];
-        }
+        $attributes['width']   = $width;
+        $attributes['height']  = $height;
         $attributes['loading'] = 'lazy';
 
         $attributes = Html::addExcludeLazyLoadAttributes($attributes);
@@ -901,13 +898,10 @@ class Slide extends AbstractRenderableOwner {
             $optimizeThumbnail = $this->sliderObject->params->get('optimize-thumbnail-scale', 0);
 
             if ($optimizeThumbnail) {
-                $optimizedThumbnailUrl  = $this->sliderObject->features->optimize->optimizeThumbnail($attributes['src']);
-                $attributes['src']      = $optimizedThumbnailUrl;
-                $optimizedThumbnailSize = FastImageSize::getSize(ResourceTranslator::urlToResource($optimizedThumbnailUrl));
-                if ($optimizedThumbnailSize) {
-                    $attributes['width']  = $optimizedThumbnailSize['width'];
-                    $attributes['height'] = $optimizedThumbnailSize['height'];
-                }
+                $optimizedThumbnailUrl = $this->sliderObject->features->optimize->optimizeThumbnail($attributes['src']);
+                $attributes['src']     = $optimizedThumbnailUrl;
+                $attributes['width']   = $width;
+                $attributes['height']  = $height;
             }
 
         }

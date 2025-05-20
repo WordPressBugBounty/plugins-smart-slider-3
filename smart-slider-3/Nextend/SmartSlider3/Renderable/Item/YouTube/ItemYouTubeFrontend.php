@@ -139,10 +139,6 @@ class ItemYouTubeFrontend extends AbstractItemFrontend {
             $style = 'style="padding-top:' . ($this->data->get('aspect-ratio-height', '9') / $this->data->get('aspect-ratio-width', '16') * 100) . '%"';
         }
 
-        $image = $this->layer->getOwner()
-                             ->fill($this->data->get('image'));
-        $this->data->set('image', $image);
-
         $playButtonImage = $this->data->get('playbuttonimage', '');
         if (!empty($playButtonImage)) {
             $playButtonImage = ResourceTranslator::toUrl($playButtonImage);
@@ -169,7 +165,8 @@ class ItemYouTubeFrontend extends AbstractItemFrontend {
         return Html::tag('div', array(
             'class'             => 'n2_ss_video_player n2-ow-all',
             'data-aspect-ratio' => $aspectRatio,
-            "style"             => 'background: URL(' . ResourceTranslator::toUrl($this->data->getIfEmpty('image', '$ss3-frontend$/images/placeholder/video.png')) . ') no-repeat 50% 50%; background-size: cover;'
+            "style"             => 'background: URL(' . ResourceTranslator::toUrl($this->layer->getOwner()
+                                                                                              ->fill($this->data->getIfEmpty('image', '$ss3-frontend$/images/placeholder/video.png'))) . ') no-repeat 50% 50%; background-size: cover;'
         ), '<div class="n2_ss_video_player__placeholder" ' . $style . '></div>' . ($this->data->get('playbutton', 1) ? '<div class="n2_ss_video_player__cover">' . $playButton . '</div>' : ''));
 
     }

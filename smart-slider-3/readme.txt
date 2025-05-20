@@ -3,8 +3,8 @@ Contributors: nextendweb
 Tags: slider, wordpress slider, image slider, layer slider, responsive slider, slideshow, fullwidth slider, post slider, horizontal slider, vertical slider, photo slider, video slider
 Donate link: https://sites.fastspring.com/nextend/product/smartslider3donate
 Requires at least: 5.0
-Tested up to: 6.7.2
-Stable tag: 3.5.1.27
+Tested up to: 6.8.1
+Stable tag: 3.5.1.28
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -217,7 +217,14 @@ Of course! Smart Slider use protocol relative urls which works fine on http:// a
 
 == Changelog ==
 
-= 3.5.1.27 - 11. March 2025 =
+= 3.5.1.28 - 19. May 2025 =
+* Feature: Accessibility improvements on bullets.
+* Fix: Filtering out unnecessary data from WordPress post generators.
+* Fix: Numpad enter triggers clicking actions too.
+* Fix: Thumbnail images will use their settings given size in their width and height html attributes.
+* Fix: On dynamic slides, the Youtube layer's Cover image field turned its variable into the value.
+
+= 3.5.1.27 - 20. February 2025 =
 * Feature: The latest background animation limitations are hardcoded now, to avoid wrong usage.
 * Feature: Title attribute for slide thumbnail.
 * Fix: At WordPress Posts generators taxonomies with the same name overwrote each other.

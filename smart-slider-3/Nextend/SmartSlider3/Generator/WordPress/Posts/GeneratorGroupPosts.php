@@ -62,7 +62,9 @@ class GeneratorGroupPosts extends AbstractGeneratorGroup {
         if (count($post_meta) && is_array($post_meta) && !empty($post_meta)) {
             $excluded_metas = array(
                 'hc-editor-mode',
-                'techline-sidebar'
+                'techline-sidebar',
+                'amazonS3_cache',
+                '_tribe_modified_fields'
             );
 
             foreach ($excluded_metas as $excluded_meta) {
