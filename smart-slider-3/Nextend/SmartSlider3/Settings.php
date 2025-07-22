@@ -14,7 +14,7 @@ class Settings {
         if (self::$settings === null) {
 
             self::$settings = json_decode(StorageSectionManager::getStorage('smartslider')
-                                                               ->get(self::$_type), true);
+                                                               ->get(self::$_type, null, '[]'), true);
             if (self::$settings === null || !is_array(self::$settings)) self::$settings = array();
         }
 

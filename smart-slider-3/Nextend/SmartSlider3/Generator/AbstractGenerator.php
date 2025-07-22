@@ -60,7 +60,7 @@ abstract class AbstractGenerator {
 
         $this->resetState();
 
-        $data       = array();
+        $data = array();
         $linearData = $this->_getData($slides * $group, $startIndex - 1);
         if ($linearData != null) {
             $keys = array();
@@ -105,11 +105,15 @@ abstract class AbstractGenerator {
     }
 
     protected function getIDs($field = 'ids') {
-        return array_map('intval', explode("\n", str_replace(array(
-            "\r\n",
-            "\n\r",
-            "\r"
-        ), "\n", $this->data->get($field))));
+        $result = array_filter(array_map('trim', explode("\n", str_replace([
+                "\r\n",
+                "\n\r",
+                "\r"
+            ], "\n", $this->data->get($field)))), function ($value) {
+            return is_numeric($value);
+        });
+
+        return array_values(array_map('intval', $result));
     }
 
     public function filterName($name) {

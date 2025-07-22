@@ -18,7 +18,7 @@ class Install {
         $tables->install();
         InstallWordPress::install();
 
-        preg_match('/[\d\.]+[\d]/', Settings::get('n2_ss3_version'), $oldversion);
+        preg_match('/[\d\.]+[\d]/', Settings::get('n2_ss3_version', '3.5.1.3'), $oldversion);
         if ($oldversion && version_compare($oldversion[0], "3.5.1.2", '<=')) {
             $tables->reindexOrders();
         }

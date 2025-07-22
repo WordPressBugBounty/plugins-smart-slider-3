@@ -1575,8 +1575,7 @@ _N2.d('SmartSliderBackgroundAnimationExplodeReversed', ['SmartSliderBackgroundAn
     };
 
     return SmartSliderBackgroundAnimationFlat;
-});
-_N2.d('SmartSliderBackgroundAnimationGL', ['SmartSliderBackgroundAnimationAbstract'], function () {
+});_N2.d('SmartSliderBackgroundAnimationGL', ['SmartSliderBackgroundAnimationAbstract'], function () {
 
     /**
      * This function tries to apply all supported background specific effects on the canvas to emulate browser html rendering.
@@ -1595,6 +1594,10 @@ _N2.d('SmartSliderBackgroundAnimationGL', ['SmartSliderBackgroundAnimationAbstra
 
         //document.body.appendChild(canvas);
         const ctx = canvas.getContext('2d', {alpha: true});
+
+        if (backgroundInterface instanceof _N2.SmartSliderBackgroundAnimationBackgroundInterfaceFrontend && backgroundInterface.background.slide.slider.disabled.webGLBackgroundAnimationImageSmoothing) {
+            ctx.imageSmoothingEnabled = false;
+        }
 
         if (backgroundInterface.hasImage()) {
 

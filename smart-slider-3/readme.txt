@@ -4,7 +4,7 @@ Tags: slider, wordpress slider, image slider, layer slider, responsive slider, s
 Donate link: https://sites.fastspring.com/nextend/product/smartslider3donate
 Requires at least: 5.0
 Tested up to: 6.8.1
-Stable tag: 3.5.1.28
+Stable tag: 3.5.1.29
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -216,6 +216,13 @@ Of course! Smart Slider use protocol relative urls which works fine on http:// a
 9. Enhance your site with our FREE Layer Slider's stylish layers for a better user experience.
 
 == Changelog ==
+
+= 3.5.1.29 - 22. July 2025 =
+* Feature: webGL background animation image smoothing can be turned off using custom js codes.
+* Fix: Vulnerability fix.
+* Fix: Empty lines at Posts by IDs generator will be filtered out.
+* Fix: PHP 8.2+ compatibility fixes.
+* Fix: Vimeo layer, YouTube layer videos couldn't be started in some cases.
 
 = 3.5.1.28 - 19. May 2025 =
 * Feature: Accessibility improvements on bullets.

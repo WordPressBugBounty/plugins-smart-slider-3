@@ -87,7 +87,7 @@ class ControllerSliders extends AbstractControllerAdmin {
     protected function actionImport() {
         if ($this->validatePermission('smartslider_edit')) {
 
-            $groupID = Request::$REQUEST->getVar('groupID', 0);
+            $groupID = Request::$REQUEST->getInt('groupID', 0);
 
             $view = new ViewSlidersImport($this);
             $view->setGroupID($groupID);

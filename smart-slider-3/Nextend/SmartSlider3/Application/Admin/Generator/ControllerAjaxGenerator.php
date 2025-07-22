@@ -26,7 +26,7 @@ class ControllerAjaxGenerator extends AdminAjaxController {
         $group = Request::$REQUEST->getVar('group');
         $this->validateVariable($group, 'group');
 
-        $sliderID = Request::$REQUEST->getVar('sliderid');
+        $sliderID = Request::$REQUEST->getInt('sliderid');
         $this->validateVariable($sliderID, 'sliderid');
 
         $groupID = Request::$REQUEST->getInt('groupID');
@@ -56,7 +56,7 @@ class ControllerAjaxGenerator extends AdminAjaxController {
         $type = Request::$REQUEST->getVar('type');
         $this->validateVariable($type, 'type');
 
-        $sliderID = Request::$REQUEST->getVar('sliderid');
+        $sliderID = Request::$REQUEST->getInt('sliderid');
         $this->validateVariable($sliderID, 'sliderid');
 
         $groupID = Request::$REQUEST->getInt('groupID');

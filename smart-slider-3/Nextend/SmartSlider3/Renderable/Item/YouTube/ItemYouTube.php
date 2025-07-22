@@ -166,7 +166,7 @@ class ItemYouTube extends AbstractItem {
 
         $misc = new Fieldset\LayerWindow\FieldsetLayerWindow($container, 'item-youtube-misc', n2_('Video settings'));
 
-        new Warning($misc, 'slide-background-notice', sprintf(n2_('Video autoplaying has a lot of limitations made by browsers. %1$sLearn about them.%2$s'), '<a href="https://smartslider.helpscoutdocs.com/article/1919-video-autoplay-handling" target="_blank">', '</a>'));
+        new Warning($misc, 'autoplay-notice', sprintf(n2_('Video autoplaying has a lot of limitations made by browsers. %1$sLearn about them.%2$s'), '<a href="https://smartslider.helpscoutdocs.com/article/1919-video-autoplay-handling" target="_blank">', '</a>'));
 
         new OnOff($misc, 'autoplay', n2_('Autoplay'), 0, array(
             'relatedFieldsOn' => array(

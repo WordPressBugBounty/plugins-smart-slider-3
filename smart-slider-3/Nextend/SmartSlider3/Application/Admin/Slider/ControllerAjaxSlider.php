@@ -204,7 +204,7 @@ class ControllerAjaxSlider extends AdminAjaxController {
 
             $import = new ImportSlider($this);
 
-            $groupID = Request::$REQUEST->getVar('groupID', 0);
+            $groupID = Request::$REQUEST->getInt('groupID', 0);
 
             $sliderId = $import->import($result, $groupID, 'clone', 1, false);
 
