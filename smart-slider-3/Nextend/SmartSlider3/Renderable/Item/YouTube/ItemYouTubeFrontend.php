@@ -62,10 +62,11 @@ class ItemYouTubeFrontend extends AbstractItemFrontend {
 
         $coverImage = '';
         if (!empty($coverImageUrl)) {
+            $alt = $owner->fill($this->data->getIfEmpty('alt', n2_('Play')));
 
             $coverImageElement = $owner->renderImage($this, $coverImageUrl, array(
                 'class' => 'n2_ss_video_cover',
-                'alt'   => n2_('Play')
+                'alt'   => $alt
             ), array(
                 'class' => 'n2-ow-all'
             ));
@@ -102,7 +103,8 @@ class ItemYouTubeFrontend extends AbstractItemFrontend {
                         $src = Image::SVGToBase64($image);
                     }
 
-                    $playImage = Html::image($src, 'Play', $attributes);
+                    $playButtonAlt = $owner->fill($this->data->getIfEmpty('playbuttonalt', n2_('Play')));
+                    $playImage     = Html::image($src, $playButtonAlt, $attributes);
                 }
             }
 
@@ -134,6 +136,8 @@ class ItemYouTubeFrontend extends AbstractItemFrontend {
 
         $aspectRatio = $this->data->get('aspect-ratio', '16:9');
 
+        $owner = $this->layer->getOwner();
+
         $style = '';
         if ($aspectRatio == 'custom') {
             $style = 'style="padding-top:' . ($this->data->get('aspect-ratio-height', '9') / $this->data->get('aspect-ratio-width', '16') * 100) . '%"';
@@ -157,7 +161,8 @@ class ItemYouTubeFrontend extends AbstractItemFrontend {
             $playButtonStyle .= 'height:' . $playButtonWidth . 'px;';
         }
 
-        $playButton = Html::image($playButtonImage, n2_('Play'), Html::addExcludeLazyLoadAttributes(array(
+        $playButtonAlt = $owner->fill($this->data->getIfEmpty('playbuttonalt', n2_('Play')));
+        $playButton    = Html::image($playButtonImage, $playButtonAlt, Html::addExcludeLazyLoadAttributes(array(
             'class' => 'n2_ss_video_play_btn',
             'style' => $playButtonStyle
         )));

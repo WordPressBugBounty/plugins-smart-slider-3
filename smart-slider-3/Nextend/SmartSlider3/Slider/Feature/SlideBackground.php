@@ -175,11 +175,20 @@ class SlideBackground {
          * }
          */
 
-        return Html::tag('div', array(
+        $attributes = array(
             'class'          => "n2-ss-slide-background",
             'data-public-id' => $slide->publicID,
             'data-mode'      => $fillMode
-        ), $html);
+        );
+
+        if ($this->slider->data->get('type', 'simple') == 'simple' && !isset($slide->attributes['data-first'])) {
+            $attributes += array(
+                'aria-hidden' => 'true'
+            );
+
+        }
+
+        return Html::tag('div', $attributes, $html);
     }
 
     private function renderColor($slide) {

@@ -21,7 +21,7 @@ class WordPressFrontend {
 
     public function preRender() {
         if (Request::$GET->getInt('n2prerender') && Request::$GET->getCmd('n2app') !== '') {
-            if (current_user_can('smartslider') || current_user_can('edit_posts') || current_user_can('edit_pages') || (Request::$GET->getCmd('h') === sha1(NONCE_SALT . date('Y-m-d') || Request::$GET->getCmd('h') === sha1(NONCE_SALT . date('Y-m-d', time() - 60 * 60 * 24))))) {
+            if (current_user_can('smartslider') || current_user_can('edit_posts') || current_user_can('edit_pages')) {
                 try {
 
                     $application = ApplicationSmartSlider3::getInstance();

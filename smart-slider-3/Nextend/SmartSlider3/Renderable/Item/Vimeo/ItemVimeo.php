@@ -63,6 +63,7 @@ class ItemVimeo extends AbstractItem {
                 'vimeourl'         => '75251217',
                 'privateid'        => '',
                 'image'            => '$ss3-frontend$/images/placeholder/video.png',
+                'alt'              => '',
                 'aspect-ratio'     => '16:9',
                 'autoplay'         => 0,
                 'ended'            => '',
@@ -76,6 +77,7 @@ class ItemVimeo extends AbstractItem {
                 'playbuttonwidth'  => 48,
                 'playbuttonheight' => 48,
                 'playbuttonimage'  => '',
+                'playbuttonalt'    => '',
                 'scroll-pause'     => 'partly-visible',
             );
     }
@@ -85,7 +87,9 @@ class ItemVimeo extends AbstractItem {
         $data = parent::getFilled($slide, $data);
 
         $data->set('image', $slide->fill($data->get('image', '')));
+        $data->set('alt', $slide->fill($data->get('alt', '')));
         $data->set('vimeourl', $slide->fill($data->get('vimeourl', '')));
+        $data->set('playbuttonalt', $slide->fill($data->get('playbuttonalt', '')));
 
         return $data;
     }
@@ -169,7 +173,7 @@ class ItemVimeo extends AbstractItem {
         new Warning($misc, 'autoplay-notice', sprintf(n2_('Video autoplaying has a lot of limitations made by browsers. %1$sLearn about them.%2$s'), '<a href="https://smartslider.helpscoutdocs.com/article/1919-video-autoplay-handling" target="_blank">', '</a>'));
 
         new OnOff($misc, 'autoplay', n2_('Autoplay'), 0, array(
-            'relatedFieldsOn'  => array(
+            'relatedFieldsOn' => array(
                 'item_vimeoautoplay-notice'
             )
         ));
@@ -249,6 +253,15 @@ class ItemVimeo extends AbstractItem {
         ));
 
         new Text($display, 'iframe-title', n2_('Iframe title'));
+
+        $seo = new Fieldset\LayerWindow\FieldsetLayerWindow($container, 'item-vimeo-seo', n2_('SEO'));
+        new Text($seo, 'alt', 'SEO - ' . n2_('Cover alt tag'), '', array(
+            'style' => 'width:133px;'
+        ));
+
+        new Text($seo, 'playbuttonalt', 'SEO - ' . n2_('Play alt tag'), '', array(
+            'style' => 'width:133px;'
+        ));
     }
 
 }

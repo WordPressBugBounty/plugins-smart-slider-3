@@ -64,6 +64,7 @@ class ItemYouTube extends AbstractItem {
                 'aspect-ratio'     => '16:9',
                 'youtubeurl'       => 'https://www.youtube.com/watch?v=3PPtkRU7D74',
                 'image'            => '$ss3-frontend$/images/placeholder/video.png',
+                'alt'              => '',
                 'autoplay'         => 0,
                 'ended'            => '',
                 'controls'         => 1,
@@ -78,6 +79,7 @@ class ItemYouTube extends AbstractItem {
                 'playbuttonwidth'  => 48,
                 'playbuttonheight' => 48,
                 'playbuttonimage'  => '',
+                'playbuttonalt'    => '',
                 'scroll-pause'     => 'partly-visible',
             );
     }
@@ -86,7 +88,9 @@ class ItemYouTube extends AbstractItem {
         $data = parent::getFilled($slide, $data);
 
         $data->set('image', $slide->fill($data->get('image', '')));
+        $data->set('alt', $slide->fill($data->get('alt', '')));
         $data->set('youtubeurl', $slide->fill($data->get('youtubeurl', '')));
+        $data->set('playbuttonalt', $slide->fill($data->get('playbuttonalt', '')));
 
         return $data;
     }
@@ -239,6 +243,16 @@ class ItemYouTube extends AbstractItem {
             'tipLabel'       => n2_('Show related videos'),
             'tipDescription' => n2_('YouTube no longer allows hiding the related videos at the end of the video. This setting defines whether the videos should come from the same channel as the video that was just played or from any other channel.'),
             'tipLink'        => 'https://smartslider.helpscoutdocs.com/article/1846-youtube-layer#show-related-videos',
+        ));
+
+
+        $seo = new Fieldset\LayerWindow\FieldsetLayerWindow($container, 'item-youtube-seo', n2_('SEO'));
+        new Text($seo, 'alt', 'SEO - ' . n2_('Cover alt tag'), '', array(
+            'style' => 'width:133px;'
+        ));
+
+        new Text($seo, 'playbuttonalt', 'SEO - ' . n2_('Play alt tag'), '', array(
+            'style' => 'width:133px;'
         ));
     }
 }

@@ -299,10 +299,11 @@ class ControllerAjaxSlides extends AdminAjaxController {
                 $createdSlidesID[] = $slidesModel->createQuickEmptySlide($sliderId);
                 break;
             case 'video':
-                $video = json_decode(urldecode(Base64::decode(Request::$REQUEST->getVar('video'))), true);
-                $this->validateVariable($video, 'Video');
-
-                $createdSlidesID[] = $slidesModel->createQuickVideo($video, $sliderId);
+                $videos = json_decode(urldecode(Base64::decode(Request::$REQUEST->getVar('videos'))), true);
+                $this->validateVariable(count($videos), 'Video');
+                foreach ($videos as $video) {
+                    $createdSlidesID[] = $slidesModel->createQuickVideo($video, $sliderId);
+                }
                 break;
             case 'post':
                 $post = Request::$REQUEST->getVar('post');

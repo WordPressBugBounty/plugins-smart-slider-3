@@ -4,18 +4,19 @@ msgstr ""
 "Project-Id-Version: VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-13 07:44+0200\n"
-"PO-Revision-Date: 2022-05-17 14:14+0200\n"
+"PO-Revision-Date: 2025-10-16 10:06+0200\n"
 "Last-Translator: \n"
-"Language-Team: \n"
+"Language-Team: 日本語\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.3.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: ;n2_;n2_e;n2_n:1,2;n2_en:1,2;n2_x:1,2c;n2_ex:1,2c\n"
 "X-Poedit-Flags-xgettext: --no-location\n"
+"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.28\n"
 
 msgid "Debug error"
 msgstr ""
@@ -128,9 +129,8 @@ msgstr "ファミリー"
 msgid "Color"
 msgstr "色"
 
-#, fuzzy
 msgid "Size"
-msgstr "大きさ"
+msgstr "サイズ"
 
 msgid "Font weight"
 msgstr "フォントの太さ"
@@ -537,15 +537,13 @@ msgstr "削除"
 msgid "Close"
 msgstr "閉じる"
 
-#, fuzzy
 #| msgid "Create"
 msgid "Create group"
-msgstr "作成"
+msgstr "グループを作成"
 
-#, fuzzy
 #| msgid "Product name"
 msgid "Group name"
-msgstr "製品名"
+msgstr "グループ名"
 
 msgid "Group created"
 msgstr ""
@@ -985,7 +983,7 @@ msgstr ""
 msgid "Between %s and %s pixels."
 msgstr ""
 
-#, javascript-format, php-format
+#, php-format
 msgid "This slide is hidden on the following devices: %s"
 msgstr ""
 
@@ -1043,31 +1041,37 @@ msgid "Convert"
 msgstr ""
 
 msgid "What do you want to create today?"
-msgstr ""
+msgstr "今日はどんなものを作成しますか？"
 
 msgid ""
 "Use our powerful visual editor, or simply import one of our existing "
 "template."
 msgstr ""
+"強力なビジュアルエディターを使うことも、既存のテンプレートから作成することも"
+"可能。"
 
 msgid "Create a New Project"
-msgstr ""
+msgstr "自分で新規プロジェクトを作成"
 
 msgid ""
 "Start a new project from scratch and build exactly what you’ve imagined. You "
 "can easily customize every pixels and create anything with layers."
 msgstr ""
+"新規プロジェクトをゼロから作成し、思い描いだ通りの物を作成しましょう。ピクセ"
+"ル単位で調整が可能で、レイヤーを使ってなんでも作成できます。"
 
 msgid "Start with a Template"
-msgstr ""
+msgstr "テンプレートから作成"
 
 msgid ""
 "Start with a template and make it your own with the innovative drag and drop "
 "interface. You can choose from hundreds of premade templates."
 msgstr ""
+"好みのテンプレートを使って作成でき、革新的なドラッグ＆ドロップインタフェース"
+"で自分のものにカスタマイズできます。数百種類のテンプレートから選べます。"
 
 msgid "or import your own files"
-msgstr ""
+msgstr "または、自分のファイルをインポートする"
 
 msgid "Create new project"
 msgstr ""
@@ -1131,10 +1135,9 @@ msgstr ""
 msgid "Subscribe"
 msgstr ""
 
-#, fuzzy
 #| msgid "Whole group"
 msgid "Change group"
-msgstr "グループ全体"
+msgstr "グループの変更"
 
 msgid "Groups"
 msgstr ""
@@ -1160,7 +1163,7 @@ msgid "Insert group"
 msgstr "グループを挿入"
 
 msgid "Move to trash"
-msgstr ""
+msgstr "ゴミ箱へ移動"
 
 msgid "empty the trash"
 msgstr ""
@@ -1177,7 +1180,7 @@ msgid "Publish"
 msgstr "公開"
 
 msgid "Unpublish"
-msgstr "未公開"
+msgstr "非公開"
 
 msgid "Edit generator"
 msgstr "ジェネレーターを編集"
@@ -1776,8 +1779,8 @@ msgstr ""
 #, php-format
 msgid ""
 "You can use the global breakpoints, or adjust them locally here. You can "
-"configure the Global breakpoints at <a href=\"%1$s\" target=\"_blank"
-"\">Global settings</a> > General > Breakpoints"
+"configure the Global breakpoints at <a href=\"%1$s\" "
+"target=\"_blank\">Global settings</a> > General > Breakpoints"
 msgstr ""
 
 msgid "Custom size"
@@ -1966,6 +1969,8 @@ msgid ""
 "To help you get started, we've put together a super tutorial video that "
 "shows you the basic settings."
 msgstr ""
+"手軽に始められるように、基本的な設定などについて優れたチュートリアル動画を用"
+"意しています！"
 
 #, fuzzy
 #| msgid "Possible Conflicts"
@@ -2037,10 +2042,9 @@ msgid ""
 "browsers are the following: %s."
 msgstr ""
 
-#, fuzzy
 #| msgid "Slider center"
 msgid "Help center"
-msgstr "スライドの中央"
+msgstr "ヘルプセンター"
 
 msgid "Help"
 msgstr "ヘルプ"
@@ -2618,13 +2622,13 @@ msgstr "ショーケース"
 
 #, php-format
 msgid "Showing %s to %s of %s projects"
-msgstr ""
+msgstr "%s ~ %s プロジェクト表示中 （合計 %s プロジェクト）"
 
 msgid "No projects to show"
 msgstr ""
 
 msgid "New project"
-msgstr ""
+msgstr "新規プロジェクト"
 
 msgid "Sorry we couldn’t find any matches"
 msgstr ""
@@ -3039,13 +3043,13 @@ msgid "The imported file is not readable!"
 msgstr "インポートファイルが読み込めませんでした"
 
 msgid "Go to dashboard"
-msgstr ""
+msgstr "ダッシュボードへ"
 
 msgid "Welcome to Smart Slider 3"
-msgstr ""
+msgstr "Smart Slider 3へようこそ"
 
 msgid "Don't show again"
-msgstr ""
+msgstr "以降、非表示に"
 
 msgid "Import project"
 msgstr ""
@@ -4812,15 +4816,15 @@ msgstr "長方形"
 msgid "Slopes"
 msgstr "傾斜"
 
-#, fuzzy, php-format
+#, php-format
 #| msgid "Tilt 1"
 msgid "Tilt %d"
-msgstr "傾斜1"
+msgstr "傾斜 %d"
 
-#, fuzzy, php-format
+#, php-format
 #| msgid "Triangle 1"
 msgid "Triangle %d"
-msgstr "三角形1"
+msgstr "三角形 %d"
 
 #, fuzzy, php-format
 #| msgid "Wave 1"
@@ -5893,10 +5897,9 @@ msgstr "中央"
 msgid "Right top"
 msgstr "右"
 
-#, fuzzy
 #| msgid "Slider center"
 msgid "Left center"
-msgstr "スライドの中央"
+msgstr "左中央"
 
 #, fuzzy
 #| msgid "Center"
@@ -6042,7 +6045,7 @@ msgid "Days"
 msgstr "日数"
 
 msgid "Minutes"
-msgstr "議事録"
+msgstr "分"
 
 msgid "Seconds"
 msgstr "秒"
@@ -6116,10 +6119,10 @@ msgstr ""
 msgid "Amazing"
 msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 #| msgid "Circle 1"
 msgid "Circle %d"
-msgstr "円1"
+msgstr "円形 %d"
 
 #, fuzzy, php-format
 #| msgid "Curly 1"
@@ -6136,10 +6139,10 @@ msgstr "ハイライト1"
 msgid "Line Through %d"
 msgstr "ラインスルー1"
 
-#, fuzzy, php-format
+#, php-format
 #| msgid "Rectangle 1"
 msgid "Rectangle %d"
-msgstr "長方形1"
+msgstr "長方形 %d"
 
 #, fuzzy, php-format
 #| msgid "Underline 1"
@@ -6657,267 +6660,3 @@ msgstr ""
 
 msgid "Bar color"
 msgstr ""
-
-#~ msgctxt "Default Google font family for admin"
-#~ msgid "Montserrat"
-#~ msgstr "モントセラト"
-
-#~ msgctxt "Default Google font charset for admin"
-#~ msgid "latin"
-#~ msgstr "ラテン語"
-
-#~ msgid "Character set"
-#~ msgstr "文字セット"
-
-#~ msgctxt "Character set"
-#~ msgid "Latin"
-#~ msgstr "ラテン語"
-
-#~ msgctxt "Character set"
-#~ msgid "Latin Extended"
-#~ msgstr "ラテン語拡張"
-
-#~ msgctxt "Character set"
-#~ msgid "Greek"
-#~ msgstr "ギリシャ語"
-
-#~ msgctxt "Character set"
-#~ msgid "Greek Extended"
-#~ msgstr "ギリシャ語拡張"
-
-#~ msgctxt "Character set"
-#~ msgid "Cyrillic"
-#~ msgstr "キリル文字"
-
-#~ msgctxt "Character set"
-#~ msgid "Devanagari"
-#~ msgstr "インド文字"
-
-#~ msgctxt "Character set"
-#~ msgid "Arabic"
-#~ msgstr "アラビア語"
-
-#~ msgctxt "Character set"
-#~ msgid "Khmer"
-#~ msgstr "クメール語"
-
-#~ msgctxt "Character set"
-#~ msgid "Telugu"
-#~ msgstr "テルグ語"
-
-#~ msgctxt "Character set"
-#~ msgid "Vietnamese"
-#~ msgstr "ベトナム語"
-
-#~ msgctxt "Default font sets"
-#~ msgid "latin"
-#~ msgstr "ラテン語"
-
-#~ msgid "hours"
-#~ msgstr "時間"
-
-#~ msgid "Loop single slide"
-#~ msgstr "スライドが1枚のみの場合でもループする"
-
-#~ msgid "Curve 2"
-#~ msgstr "カーブ2"
-
-#~ msgid "Curve 3"
-#~ msgstr "カーブ3"
-
-#~ msgid "Curve 4"
-#~ msgstr "カーブ4"
-
-#~ msgid "Fan 2"
-#~ msgstr "ファン2"
-
-#~ msgid "Fan 3"
-#~ msgstr "ファン3"
-
-#~ msgid "Incline 2"
-#~ msgstr "角度上昇2"
-
-#~ msgid "Incline 3"
-#~ msgstr "角度上昇3"
-
-#~ msgid "Tilt 2"
-#~ msgstr "傾斜2"
-
-#~ msgid "Triangle 2"
-#~ msgstr "三角形2"
-
-#~ msgid "Wave 2"
-#~ msgstr "波2"
-
-#~ msgid "Types"
-#~ msgstr "Types"
-
-#~ msgid "Expired"
-#~ msgstr "期限切れ"
-
-#~ msgid "Auction"
-#~ msgstr "オークション"
-
-#~ msgid "Negotiable price"
-#~ msgstr "交渉可能な価格"
-
-#~ msgid "Blocked by User"
-#~ msgstr "ユーザーによってブロック"
-
-#~ msgid "Buynow"
-#~ msgstr "今すぐ購入"
-
-#~ msgid "Expiration date"
-#~ msgstr "期限日"
-
-#~ msgid "Supplier"
-#~ msgstr "供給者"
-
-#~ msgid "Create custom date variables"
-#~ msgstr "カスタム日付変数を作成"
-
-#~ msgid "Circle 2"
-#~ msgstr "円2"
-
-#~ msgid "Circle 3"
-#~ msgstr "円3"
-
-#~ msgid "Curly 2"
-#~ msgstr "巻き2"
-
-#~ msgid "Highlight 2"
-#~ msgstr "ハイライト2"
-
-#~ msgid "Highlight 3"
-#~ msgstr "ハイライト3"
-
-#~ msgid "Line Through 2"
-#~ msgstr "ラインスルー2"
-
-#~ msgid "Line Through 3"
-#~ msgstr "ラインスルー3"
-
-#~ msgid "Rectangle 2"
-#~ msgstr "長方形2"
-
-#~ msgid "Underline 2"
-#~ msgstr "下線2"
-
-#~ msgid "Underline 3"
-#~ msgstr "下線3"
-
-#~ msgid "Underline double 2"
-#~ msgstr "二重線2"
-
-#~ msgid "ZigZag 2"
-#~ msgstr "ジグザグ2"
-
-#~ msgid "ZigZag 3"
-#~ msgstr "ジグザグ3"
-
-#~ msgid "m-d-Y"
-#~ msgstr "m-d-Y"
-
-#~ msgid "Async"
-#~ msgstr "非同期"
-
-#~ msgid "Combine"
-#~ msgstr "結合"
-
-#~ msgid "Priority"
-#~ msgstr "優先度"
-
-#~ msgid "Tile"
-#~ msgstr "タイル"
-
-#~ msgid "Generate"
-#~ msgstr "生成"
-
-#~ msgid "Desktop image is empty!"
-#~ msgstr "デスクトップ画像はありません！"
-
-#, fuzzy
-#~| msgid "Tablet Retina"
-#~ msgid "Tablet retina"
-#~ msgstr "タブレット（Retinaディスプレイ）"
-
-#, fuzzy
-#~| msgid "Mobile Retina"
-#~ msgid "Mobile retina"
-#~ msgstr "モバイル（Retinaディスプレイ）"
-
-#, fuzzy
-#~| msgid "MP4 video"
-#~ msgid "Watch video"
-#~ msgstr "MP4形式の動画"
-
-#, fuzzy
-#~| msgid "Mouse enter position"
-#~ msgid "Absolute position"
-#~ msgstr "マウスカーソルが入った位置"
-
-#, fuzzy
-#~| msgid "Read more"
-#~ msgid "Read docs"
-#~ msgstr "もっと読む"
-
-#~ msgid "Load jQuery on frontend"
-#~ msgstr "フロントエンドでjQueryを読み込む"
-
-#~ msgid "Load GSAP on frontend"
-#~ msgstr "フロントエンドでGSAPを読み込む"
-
-#~ msgid "CSS mode"
-#~ msgstr "CSSモード"
-
-#~ msgid "Inline"
-#~ msgstr "インライン"
-
-#~ msgid "Minimum thumbnail count"
-#~ msgstr "最小サムネイル数"
-
-#, fuzzy
-#~| msgid "Line color"
-#~ msgid "Text color"
-#~ msgstr "線の色"
-
-#~ msgctxt "Slider type"
-#~ msgid "Accordion"
-#~ msgstr "アコーディオン"
-
-#~ msgid "Outer color"
-#~ msgstr "外側の色"
-
-#~ msgid "Inner color"
-#~ msgstr "内側の色"
-
-#~ msgid "Slide margin"
-#~ msgstr "スライドのマージン"
-
-#, fuzzy
-#~| msgid "Background color"
-#~ msgid "Slider background color"
-#~ msgstr "背景色"
-
-#~ msgid "Show Joomla admin footer"
-#~ msgstr "Joomleの管理者フォルダーを表示"
-
-#~ msgid "Smooth scroll to this element"
-#~ msgstr "この要素へスムーズにスクロール"
-
-#~ msgid "After slider"
-#~ msgstr "スライダーの後"
-
-#~ msgid "Slider ID"
-#~ msgstr "スライダーID"
-
-#, fuzzy
-#~| msgid "Image manager"
-#~ msgid "manage pages"
-#~ msgstr "画像管理"
-
-#~ msgid "Server side mobile detect"
-#~ msgstr "サーバー側でのモバイル検出"
-
-#~ msgid "Ticket price"
-#~ msgstr "チケット価格"

@@ -17,7 +17,7 @@ class Autoplay {
     private $slider;
 
     public $isEnabled = 0, $isStart = 0, $duration = 8000;
-    public $isLoop = 1, $interval = 1, $intervalModifier = 'loop', $intervalSlide = 'current', $allowReStart = 0;
+    public $isLoop = 1, $interval = 1, $intervalModifier = 'loop', $intervalSlide = 'current', $allowReStart = 0, $reverse = 0;
     public $stopOnClick = 1, $stopOnMediaStarted = 1;
     public $resumeOnMediaEnded = 1, $resumeOnSlideChanged = 0;
 
@@ -38,6 +38,8 @@ class Autoplay {
         list($this->interval, $this->intervalModifier, $this->intervalSlide) = (array)Common::parse($slider->params->get('autoplayfinish', '1|*|loop|*|current'));
 
         $this->allowReStart = intval($params->get('autoplayAllowReStart', 0));
+
+        $this->reverse = intval($params->get('autoplayReverse', 0));
 
         $this->isLoop = intval($params->get('autoplayLoop', 1));
 
@@ -62,6 +64,7 @@ class Autoplay {
             'duration'         => $this->duration,
             'autoplayLoop'     => $this->isLoop,
             'allowReStart'     => $this->allowReStart,
+            'reverse'          => $this->reverse,
             'pause'            => array(
                 'click'        => $this->stopOnClick,
                 'mouse'        => $this->stopOnMouse,

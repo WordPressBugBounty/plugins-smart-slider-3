@@ -40,6 +40,7 @@ class Gutenberg {
         wp_register_script('gutenberg-smartslider3', self::getAssetsUri() . '/dist/gutenberg-block.min.js', $deps, null, true);
 
         register_block_type('nextend/smartslider3', array(
+            'api_version'   => 3,
             'editor_script' => 'gutenberg-smartslider3',
         ));
 

@@ -116,6 +116,27 @@ class ControllerAjaxBrowse extends AdminAjaxController {
         return true;
     }
 
+    private function displayError($error_code) {
+        $errorMessages = array(
+            1 => n2_('The uploaded file exceeds the upload_max_filesize directive in php.ini.'),
+            2 => n2_('The uploaded file exceeds the MAX_FILE_SIZE directive specified in the HTML form.'),
+            3 => n2_('The uploaded file was only partially uploaded.'),
+            4 => n2_('No file was uploaded.'),
+            6 => n2_('The temporary folder is missing from the server.'),
+            7 => n2_('Failed to write file to disk.'),
+            8 => n2_('A PHP extension stopped the file uploading.')
+        );
+
+        if (isset($errorMessages[$error_code])) {
+            $error = $errorMessages[$error_code];
+        } else {
+            $error = n2_('Unknown error code: ' . $error_code);
+        }
+
+        Notification::error(n2_('File uploading was stopped by the server!') . '<br>' . $error);
+        $this->response->error();
+    }
+
     public function actionUpload() {
         if (defined('N2_IMAGE_UPLOAD_DISABLE')) {
             Notification::error(n2_('You are not allowed to upload!'));
@@ -129,17 +150,22 @@ class ControllerAjaxBrowse extends AdminAjaxController {
 
         $this->validateToken();
 
-        $image        = Request::$FILES->getVar('image');
-        $imageMime    = $this->get_image_mime($image['tmp_name']);
+        $media = Request::$FILES->getVar('media');
+        if ($media['error'] > 0) {
+            $this->displayError($media['error']);
+        }
+
+        $mediaMime    = mime_content_type($media['tmp_name']);
         $allowedMimes = array(
             'png'  => 'image/png',
             'jpg'  => 'image/jpeg',
             'jpeg' => 'image/jpeg',
             'gif'  => 'image/gif',
             'webp' => 'image/webp',
-            'svg'  => 'image/svg+xml'
+            'svg'  => 'image/svg+xml',
+            'mp4'  => 'video/mp4'
         );
-        if (!in_array($imageMime, get_allowed_mime_types()) || !in_array($imageMime, $allowedMimes)) {
+        if (!in_array($mediaMime, get_allowed_mime_types()) || !in_array($mediaMime, $allowedMimes)) {
             Notification::error(n2_('You are not allowed to upload this filetype!'));
             $this->response->error();
         }
@@ -195,11 +221,11 @@ class ControllerAjaxBrowse extends AdminAjaxController {
             'path' => $relativePath
         );
         try {
-            if ($image['name'] !== null) {
-                $info = pathinfo($image['name']);
+            if ($media['name'] !== null) {
+                $info = pathinfo($media['name']);
 
-                if ($imageMime != $allowedMimes[strtolower($info['extension'])]) {
-                    Notification::error(n2_('You are not allowed to upload a file with different extension (' . $info['extension'] . ') and mime type(' . $imageMime . ')!'));
+                if ($mediaMime != $allowedMimes[strtolower($info['extension'])]) {
+                    Notification::error(n2_('You are not allowed to upload a file with different extension (' . $info['extension'] . ') and mime type(' . $mediaMime . ')!'));
                     $this->response->error();
                 }
 
@@ -210,7 +236,7 @@ class ControllerAjaxBrowse extends AdminAjaxController {
 
                 $upload           = new BulletProof();
                 $file             = $upload->uploadDir($path)
-                                           ->upload($image, $fileName);
+                                           ->upload($media, $fileName);
                 $response['name'] = basename($file);
                 $response['url']  = ResourceTranslator::urlToResource(Filesystem::pathToAbsoluteURL($file));
 
@@ -223,70 +249,6 @@ class ControllerAjaxBrowse extends AdminAjaxController {
 
 
         $this->response->respond($response);
-    }
-
-    /**
-     * Returns the real mime type of an image file.
-     *
-     * @param string $file Full path to the file.
-     *
-     * @return string|false The actual mime type or false if the type cannot be determined.
-     *
-     */
-    private function get_image_mime($file) {
-        /*
-         * Use exif_imagetype() to check the mimetype if available or fall back to
-         * getimagesize() if exif isn't available. If either function throws an Exception
-         * we assume the file could not be validated.
-         */
-        try {
-            if (is_callable('exif_imagetype')) {
-                $imagetype = exif_imagetype($file);
-                $mime      = ($imagetype) ? image_type_to_mime_type($imagetype) : false;
-            } elseif (function_exists('getimagesize')) {
-                $imagesize = @getimagesize($file);
-                $mime      = (isset($imagesize['mime'])) ? $imagesize['mime'] : false;
-            } else {
-                $mime = false;
-            }
-
-            if (false !== $mime) {
-                return $mime;
-            }
-
-            $magic = file_get_contents($file, false, null, 0, 12);
-
-            if (false === $magic) {
-                return 'invalid';
-            }
-
-            /*
-             * Add WebP fallback detection when image library doesn't support WebP.
-             * Note: detection values come from LibWebP, see
-             * https://github.com/webmproject/libwebp/blob/master/imageio/image_dec.c#L30
-             */
-
-            $magic = bin2hex($magic);
-            if (// RIFF.
-                ($this->str_starts_with($magic, '52494646')) && // WEBP.
-                (16 === strpos($magic, '57454250'))) {
-                $mime = 'image/webp';
-            } else {
-                // Required for SVG detection
-                $mime = mime_content_type($file);
-                if (!$this->str_starts_with($mime, 'image/')) {
-                    $mime = 'invalid';
-                }
-
-                if ($mime === 'image/svg') {
-                    $mime = 'image/svg+xml';
-                }
-            }
-        } catch (Exception $e) {
-            $mime = 'invalid';
-        }
-
-        return $mime;
     }
 
     private function str_starts_with($haystack, $needle) {

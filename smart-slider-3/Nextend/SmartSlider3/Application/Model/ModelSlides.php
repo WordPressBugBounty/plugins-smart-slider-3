@@ -42,15 +42,29 @@ class ModelSlides extends AbstractModelTable {
 
         $parameters = array(
             'background-type' => 'image',
-            'backgroundImage' => $image['image']
+            'backgroundImage' => $image['media']
         );
 
         if (!empty($image['alt'])) {
             $parameters['backgroundAlt'] = $image['alt'];
         }
 
-        $slideID = $this->create($sliderId, $image['title'], array(), $image['image'], $parameters, array(
+        $slideID = $this->create($sliderId, $image['title'], array(), $image['media'], $parameters, array(
             'description' => $image['description']
+        ));
+        $this->markChanged($sliderId);
+
+        return $slideID;
+    }
+
+    public function createQuickVideo($video, $sliderId) {
+        $parameters = array(
+            'background-type'    => 'video',
+            'backgroundVideoMp4' => $video['media']
+        );
+
+        $slideID = $this->create($sliderId, $video['title'], array(), $video['media'], $parameters, array(
+            'description' => $video['description']
         ));
         $this->markChanged($sliderId);
 

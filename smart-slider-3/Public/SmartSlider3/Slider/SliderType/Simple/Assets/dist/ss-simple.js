@@ -667,11 +667,19 @@ _ready(function () {
     SmartSliderMainAnimationSimple.prototype.hideSlide = function (slide) {
 
         _N2.MW.___setValues(slide.SMWs, {x: -100000 * n2const.rtl.modifier});
+        _NodeSetAttribute(slide.background.element, 'aria-hidden', 'true');
     };
 
     SmartSliderMainAnimationSimple.prototype.showSlide = function (slide) {
 
         _N2.MW.___setValues(slide.SMWs, {x: 0, y: 0});
+        _NodeRemoveAttribute(slide.background.element, 'aria-hidden');
+
+        /**
+         * Start background videos
+         * @see SSDEV-4090
+         */
+        slide.background.preLoad();
     };
 
     SmartSliderMainAnimationSimple.prototype.cleanSlideIndex = function (slideIndex) {
@@ -704,6 +712,8 @@ _ready(function () {
             this.reverseSlideIndex = null;
         }
         this.hideSlide(previousSlide);
+
+        _NodeRemoveAttribute(currentSlide.background.element, 'aria-hidden');
 
         _N2.SmartSliderMainAnimationAbstract.prototype.onChangeToComplete.apply(this, arguments);
     };

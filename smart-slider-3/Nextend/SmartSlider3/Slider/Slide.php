@@ -241,6 +241,9 @@ class Slide extends AbstractRenderableOwner {
         $this->attributes['data-slide-duration']  = Cast::floatToString(max(0, $this->parameters->get('slide-duration', 0)) / 1000);
         $this->attributes['data-id']              = $this->id;
         $this->attributes['data-slide-public-id'] = $this->publicID;
+        if (!isset($this->attributes['data-first'])) {
+            $this->attributes['aria-hidden'] = 'true';
+        }
 
         $this->classes .= ' n2-ss-slide-' . $this->id;
 

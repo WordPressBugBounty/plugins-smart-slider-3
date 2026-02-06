@@ -40,15 +40,14 @@
         },
         edit: function (props) {
             var attributes = props.attributes;
-
             return (
-                el('div', null,
+                el('div', blockEditor.useBlockProps(),
                     attributes.preview ? el('img', {
                             width: 500,
                             height: 250,
                             src: _N2._imageHelper.fixed('$ss3-admin$/images/ss3gutenbergblock.png')
                         }) :
-                        attributes.slider ? el('div', {className: props.className},
+                        attributes.slider ? el('div', {className: props.className, style: {pointerEvents: 'none'}},
                                 el(element.RawHTML, null, window.gutenberg_smartslider3.template.replace(/\{\{\{slider\}\}\}/g, attributes.slider)),
                                 blockEditor.BlockControls && components.ToolbarGroup && el(blockEditor.BlockControls, null,
                                     el(components.ToolbarGroup, {className: 'wp-block-nextend-smartslider3--toolbar-group'},
@@ -136,10 +135,8 @@
         },
         save: function (props) {
             var attributes = props.attributes;
-
             if (attributes.slider) {
-
-                return el('div', {className: props.className}, '[smartslider3 slider="' + attributes.slider + '"]');
+                return el('div', blockEditor.useBlockProps.save(), '[smartslider3 slider="' + attributes.slider + '"]');
             }
 
             return null;

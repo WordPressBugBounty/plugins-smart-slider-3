@@ -346,7 +346,7 @@ class BulletProof {
         // create upload directory if it does not exist
         $this->uploadDir($this->uploadDir);
 
-        $i           = '';
+        $i           = 0;
         $newFileName = $this->imageRename($isNameProvided);
 
         while (file_exists($this->uploadDir . "/" . $newFileName)) {

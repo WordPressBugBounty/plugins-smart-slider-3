@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-05-12 10:59+0200\n"
+"POT-Creation-Date: 2025-10-16 10:07+0200\n"
 "PO-Revision-Date: 2020-03-10 19:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -23,6 +23,33 @@ msgid "CURL disabled in your php.ini configuration. Please enable it!"
 msgstr ""
 
 msgid "Unable to contact with the licensing server, please try again later!"
+msgstr ""
+
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive specified in the HTML form."
+msgstr ""
+
+msgid "The uploaded file was only partially uploaded."
+msgstr ""
+
+msgid "No file was uploaded."
+msgstr ""
+
+msgid "The temporary folder is missing from the server."
+msgstr ""
+
+msgid "Failed to write file to disk."
+msgstr ""
+
+msgid "A PHP extension stopped the file uploading."
+msgstr ""
+
+msgid "Unknown error code: "
+msgstr ""
+
+msgid "File uploading was stopped by the server!"
 msgstr ""
 
 msgid "You are not allowed to upload!"
@@ -3516,6 +3543,12 @@ msgstr ""
 msgid "Play button"
 msgstr ""
 
+msgid "Cover alt tag"
+msgstr ""
+
+msgid "Play alt tag"
+msgstr ""
+
 msgid "Play"
 msgstr ""
 
@@ -4984,7 +5017,16 @@ msgstr ""
 msgid "Fallback language"
 msgstr ""
 
+msgid "Products without images"
+msgstr ""
+
 msgid "Show parent products only"
+msgstr ""
+
+msgid "Translate date"
+msgstr ""
+
+msgid "Special"
 msgstr ""
 
 #, php-format
@@ -5180,9 +5222,6 @@ msgid "Reveal"
 msgstr ""
 
 msgid "Bounce"
-msgstr ""
-
-msgid "Special"
 msgstr ""
 
 msgid "Left fade"
@@ -5822,6 +5861,9 @@ msgid "MP4 video"
 msgstr ""
 
 msgid "Preload"
+msgstr ""
+
+msgid "Poster alt tag"
 msgstr ""
 
 msgid "Joomla module"

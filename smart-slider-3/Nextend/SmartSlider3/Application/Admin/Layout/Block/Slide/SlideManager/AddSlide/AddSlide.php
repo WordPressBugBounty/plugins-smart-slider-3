@@ -12,7 +12,7 @@ use Nextend\Framework\Platform\Platform;
 <div class="n2_slide_manager__add_slide_actions">
     <div class="n2_slide_manager__add_slide_actions_inner">
 
-        <a href="#" class="n2_slide_manager__add_slide_action n2_slide_manager__add_slide_action--image" data-action="image">
+        <a href="#" class="n2_slide_manager__add_slide_action n2_slide_manager__add_slide_action--image" data-action="media">
             <div class="n2_slide_manager__add_slide_action_icon">
                 <i class="ssi_48 ssi_48--image"></i>
             </div>

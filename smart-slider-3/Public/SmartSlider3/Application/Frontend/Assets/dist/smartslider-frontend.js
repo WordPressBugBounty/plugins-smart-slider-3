@@ -2137,6 +2137,21 @@ _N2.d('SmartSliderAbstract', function () {
         return true;
     };
 
+    SmartSliderAbstract.prototype.previousCarousel = function (isSystem, customAnimation) {
+        if (!this.parameters.carousel) {
+            /**
+             * When the Carousel option is disabled, we should stop on the last slide.
+             * @see SSDEV-3744
+             */
+            return this.previous(isSystem, customAnimation);
+        }
+
+        if (!this.previous(isSystem, customAnimation)) {
+            return this.changeTo(this.getFirstSlide().index, false, isSystem, customAnimation)
+        }
+        return true;
+    };
+
     SmartSliderAbstract.prototype.getFirstSlide = function () {
         if (this.slides[0].isVisible) {
             return this.slides[0];
@@ -3386,6 +3401,7 @@ _N2.d('Stages', function () {
             duration: 8000,
             autoplayLoop: 0,
             allowReStart: 0,
+            reverse: 0,
             pause: {
                 mouse: 'enter',
                 click: true,
@@ -3654,7 +3670,12 @@ _N2.d('Stages', function () {
                     }
                 }
             }
-            this.slider.nextCarousel(true);
+
+            if (this.parameters.reverse) {
+                this.slider.previousCarousel(true);
+            } else {
+                this.slider.nextCarousel(true);
+            }
         }
     };
 
@@ -7436,7 +7457,11 @@ _N2.d('FrontendItemVimeo', function () {
                     (document.exitFullscreen || document.webkitExitFullscreen).call(document);
                 }
 
-                this.slider.next(true);
+                if (this.slider.parameters.autoplay.enabled && this.slider.parameters.autoplay.reverse) {
+                    this.slider.previous(true);
+                } else {
+                    this.slider.next(true);
+                }
             }
 
         }).bind(this));
@@ -7878,7 +7903,11 @@ _N2.d('FrontendItemVimeo', function () {
                                         (document.exitFullscreen || document.webkitExitFullscreen).call(document);
                                     }
 
-                                    this.slider.next(true);
+                                    if (this.slider.parameters.autoplay.enabled && this.slider.parameters.autoplay.reverse) {
+                                        this.slider.previous(true);
+                                    } else {
+                                        this.slider.next(true);
+                                    }
                                 }
                             }
                             break;
