@@ -702,9 +702,17 @@ class Slide extends AbstractRenderableOwner {
         $image = $this->fill($this->parameters->get('ligthboxImage'));
         if (empty($image)) {
             $image = $this->getBackgroundImage();
+            $alt   = $this->fill($this->parameters->get('backgroundAlt'));
+        } else {
+            $parts = explode('|||', $image);
+            $image = $parts[0];
+            $alt   = !empty($parts[1]) ? $parts[1] : '';
         }
 
-        return ResourceTranslator::toUrl($image);
+        return array(
+            'url' => ResourceTranslator::toUrl($image),
+            'alt' => $alt
+        );
     }
 
     public function getRow() {
@@ -758,30 +766,6 @@ class Slide extends AbstractRenderableOwner {
 
         if (!$this->visible) {
             return false;
-        }
-
-        if ($this->publish_down != '1970-01-01 00:00:00') {
-            $publish_down = strtotime($this->publish_down);
-
-            if ($publish_down) {
-                if ($publish_down > Platform::getTimestamp()) {
-                    $this->setNextCacheRefresh($publish_down);
-                } else {
-                    return false;
-                }
-            }
-        }
-
-        if ($this->publish_up != '1970-01-01 00:00:00') {
-            $publish_up = strtotime($this->publish_up);
-
-            if ($publish_up) {
-                if ($publish_up > Platform::getTimestamp()) {
-                    $this->setNextCacheRefresh($publish_up);
-
-                    return false;
-                }
-            }
         }
 
         return true;

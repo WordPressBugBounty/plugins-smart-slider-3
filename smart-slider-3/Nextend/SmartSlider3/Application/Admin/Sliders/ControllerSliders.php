@@ -39,48 +39,53 @@ class ControllerSliders extends AbstractControllerAdmin {
     }
 
     protected function actionIndex() {
-        $this->loadSliderManager();
+        if ($this->validatePermission('smartslider_edit')) {
+            $this->loadSliderManager();
 
-        $view = new ViewSlidersIndex($this);
-        $view->setPaginationIndex(max(0, intval(Request::$REQUEST->getInt('pageIndex', 0)) - 1));   /*-1 needs because beautified query string*/
+            $view = new ViewSlidersIndex($this);
+            $view->setPaginationIndex(max(0, intval(Request::$REQUEST->getInt('pageIndex', 0)) - 1));   /*-1 needs because beautified query string*/
 
-        $view->display();
+            $view->display();
+        }
     }
 
     protected function actionTrash() {
+        if ($this->validatePermission('smartslider_delete')) {
+            $view = new ViewSlidersTrash($this);
 
-        $view = new ViewSlidersTrash($this);
-
-        $view->display();
+            $view->display();
+        }
     }
 
     protected function actionExportAll() {
-        $slidersModel = new ModelSliders($this);
-        $groupID      = (Request::$REQUEST->getVar('inSearch', false)) ? '*' : Request::$REQUEST->getInt('currentGroupID', 0);
-        $sliders      = $slidersModel->getAll($groupID, 'published');
-        $ids          = Request::$REQUEST->getVar('sliders');
+        if ($this->validateToken() && $this->validatePermission('smartslider_edit')) {
+            $slidersModel = new ModelSliders($this);
+            $groupID      = (Request::$REQUEST->getVar('inSearch', false)) ? '*' : Request::$REQUEST->getInt('currentGroupID', 0);
+            $sliders      = $slidersModel->getAll($groupID, 'published');
+            $ids          = Request::$REQUEST->getVar('sliders');
 
-        $files      = array();
-        $saveAsFile = count($ids) == 1 ? false : true;
-        foreach ($sliders as $slider) {
-            if (!empty($ids) && !in_array($slider['id'], $ids)) {
-                continue;
+            $files      = array();
+            $saveAsFile = count($ids) == 1 ? false : true;
+            foreach ($sliders as $slider) {
+                if (!empty($ids) && !in_array($slider['id'], $ids)) {
+                    continue;
+                }
+                $export  = new ExportSlider($this, $slider['id']);
+                $files[] = $export->create($saveAsFile);
             }
-            $export  = new ExportSlider($this, $slider['id']);
-            $files[] = $export->create($saveAsFile);
-        }
 
-        $zip = new Creator();
-        foreach ($files as $file) {
-            $zip->addFile(file_get_contents($file), basename($file));
-            unlink($file);
+            $zip = new Creator();
+            foreach ($files as $file) {
+                $zip->addFile(file_get_contents($file), basename($file));
+                unlink($file);
+            }
+            PageFlow::cleanOutputBuffers();
+            header('Content-disposition: attachment; filename=sliders_unzip_to_import.zip');
+            header('Content-type: application/zip');
+            // PHPCS - Contains binary zip data, so nothing to escape.
+            echo $zip->file(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            PageFlow::exitApplication();
         }
-        PageFlow::cleanOutputBuffers();
-        header('Content-disposition: attachment; filename=sliders_unzip_to_import.zip');
-        header('Content-type: application/zip');
-        // PHPCS - Contains binary zip data, so nothing to escape.
-        echo $zip->file(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-        PageFlow::exitApplication();
     
     }
 

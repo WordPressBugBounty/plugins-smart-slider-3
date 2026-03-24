@@ -209,6 +209,13 @@ class ControllerAjaxBrowse extends AdminAjaxController {
                      * Get the Symlink path.
                      */
                     $path = $originalFullPath;
+                } else {
+                    /**
+                     * Block traversal
+                     * @see SSDEV-4131
+                     */
+                    Notification::error(n2_('Invalid upload path!'));
+                    $this->response->error();
                 }
             }
         }

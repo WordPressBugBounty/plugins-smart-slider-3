@@ -29,8 +29,8 @@ class SmartSlider3 {
 
         Platform::getInstance();
         SmartSlider3Platform::getInstance();
-
         Localization::loadPluginTextDomain(Nextend::getPath() . '/Languages');
+    
 
         Storage::getInstance();
 

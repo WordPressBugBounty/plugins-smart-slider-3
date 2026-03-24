@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-10-16 10:07+0200\n"
+"POT-Creation-Date: 2026-03-03 08:54+0100\n"
 "PO-Revision-Date: 2020-03-10 19:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -729,7 +729,7 @@ msgstr ""
 msgid "Content List - One Per Line"
 msgstr ""
 
-msgid "Choose images"
+msgid "Choose media"
 msgstr ""
 
 msgid "Titles - One Per Line"
@@ -1290,6 +1290,9 @@ msgid "Allow restart"
 msgstr ""
 
 msgid "Keeps the autoplay control visible after the autoplay has finished to allow starting it again."
+msgstr ""
+
+msgid "Reverse direction"
 msgstr ""
 
 msgid "Infinite loop"
@@ -2603,6 +2606,9 @@ msgid "Opens lightbox videos in their app to avoid the mobile or tablet disablin
 msgstr ""
 
 msgid "YouTube and Vimeo privacy enhanced mode"
+msgstr ""
+
+msgid "Respect reduced motion"
 msgstr ""
 
 msgid "Smooth scroll speed"

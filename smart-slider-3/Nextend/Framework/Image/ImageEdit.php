@@ -150,7 +150,6 @@ class ImageEdit {
 
                 $rotated = self::getOrientation($exif, $image);
                 if ($rotated) {
-                    imagedestroy($image);
                     $image = $rotated;
                 }
             }
@@ -179,7 +178,6 @@ class ImageEdit {
                         imagealphablending($image, false);
                         imagewebp($image, $targetFile, $quality);
                     }
-                    imagedestroy($image);
 
                     return true;
                 }
@@ -205,7 +203,6 @@ class ImageEdit {
 
                 list($dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h) = self::imageMode($targetWidth, $targetHeight, $originalWidth, $originalHeight, $mode, $x, $y);
                 imagecopyresampled($newImage, $image, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
-                imagedestroy($image);
 
             } else {
                 $newImage = $image;
@@ -221,7 +218,6 @@ class ImageEdit {
             } else if ($extension == 'webp') {
                 imagewebp($newImage, $targetFile, $quality);
             }
-            imagedestroy($newImage);
 
             return true;
         }
@@ -340,7 +336,6 @@ class ImageEdit {
 
                 $rotated = self::getOrientation($exif, $image);
                 if ($rotated) {
-                    imagedestroy($image);
                     $image = $rotated;
                 }
             }
@@ -365,7 +360,6 @@ class ImageEdit {
 
                 list($dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h) = self::imageMode($targetWidth, $targetHeight, $originalWidth, $originalHeight);
                 imagecopyresampled($newImage, $image, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
-                imagedestroy($image);
 
             } else {
                 $newImage = $image;
@@ -381,7 +375,6 @@ class ImageEdit {
             } else if ($extension == 'webp') {
                 imagewebp($newImage, $targetFile, $quality);
             }
-            imagedestroy($newImage);
 
             return true;
         }
@@ -637,7 +630,6 @@ class ImageEdit {
 
                 $rotated = self::getOrientation($exif, $image);
                 if ($rotated) {
-                    imagedestroy($image);
                     $image = $rotated;
                 }
             }
@@ -666,7 +658,7 @@ class ImageEdit {
             }
             if ((isset($rotated) && $rotated) || $originalWidth != $targetWidth || $originalHeight != $targetHeight) {
                 $newImage = imagecreatetruecolor($targetWidth, $targetHeight);
-                if ($extension == 'png') {
+                if ($extension == 'png' || $extension == 'webp') {
                     imagesavealpha($newImage, true);
                     imagealphablending($newImage, false);
                     $transparent = imagecolorallocatealpha($newImage, 255, 255, 255, 127);
@@ -675,7 +667,6 @@ class ImageEdit {
 
                 list($dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h) = self::imageMode($targetWidth, $targetHeight, $originalWidth, $originalHeight, 'cover', $options['focusX'], $options['focusY']);
                 imagecopyresampled($newImage, $image, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
-                imagedestroy($image);
 
             } else {
                 $newImage = $image;
@@ -686,7 +677,6 @@ class ImageEdit {
             }
 
             imagewebp($newImage, $targetFile, $options['quality']);
-            imagedestroy($newImage);
 
             return true;
         }

@@ -50,6 +50,12 @@ class Predefined {
     
         Js::addGlobalInline('(function(){this._N2=this._N2||{_r:[],_d:[],r:function(){this._r.push(arguments)},d:function(){this._d.push(arguments)}}}).call(window);');
 
+        if (Settings::get('respect-reduced-motion', 0)) {
+            Js::addInline('n2const.prefersReducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;');
+        } else {
+            Js::addInline('n2const.prefersReducedMotion=false;');
+        }
+
         Js::addStaticGroup(ApplicationTypeFrontend::getAssetsPath() . "/dist/n2.min.js", 'n2');
 
         FontSources::onFontManagerLoad($force);

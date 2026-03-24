@@ -15,9 +15,9 @@ if (!function_exists('smartslider3_admin_menu')) {
     }
 
     if (isset($_GET['page']) && $_GET['page'] == NEXTEND_SMARTSLIDER_3_URL_PATH) {
-        if (!version_compare(PHP_VERSION, '7.0', '>=')) {
+        if (!version_compare(PHP_VERSION, '7.4', '>=')) {
 
-            @wp_die(sprintf('<div class="error"><p>%s</p></div>', sprintf('Smart Slider 3 requires PHP version 7.0+, plugin is currently NOT RUNNING. Current PHP version: %1$s. %2$s%2$s Consult your host about %3$s upgrading your PHP version%4$s.', PHP_VERSION, '<br>', '<a href="https://wordpress.org/support/update-php/" target="_blank">', '</a>')));
+            @wp_die(sprintf('<div class="error"><p>%s</p></div>', sprintf('Smart Slider 3 requires PHP version 7.4+, plugin is currently NOT RUNNING. Current PHP version: %1$s. %2$s%2$s Consult your host about %3$s upgrading your PHP version%4$s.', PHP_VERSION, '<br>', '<a href="https://wordpress.org/support/update-php/" target="_blank">', '</a>')));
         } else if (!version_compare(get_bloginfo('version'), '5.0', '>=')) {
 
             @wp_die(sprintf('<div class="error"><p>%s</p></div>', 'Smart Slider 3 requires WordPress version 5.0+. Because you are using an earlier version, the plugin is currently NOT RUNNING.'));
@@ -31,7 +31,7 @@ if (!function_exists('smartslider3_admin_menu')) {
 
 if (!function_exists('smartslider3_fail_php_version')) {
     function smartslider3_fail_php_version() {
-        $html_message = sprintf('<div class="error"><p>%s</p></div>', sprintf('Smart Slider 3 requires PHP version 7.0+, plugin is currently NOT RUNNING. Current PHP version: %1$s. %2$s%2$s Consult your host about %3$s upgrading your PHP version%4$s.', PHP_VERSION, '<br>', '<a href="https://wordpress.org/support/update-php/" target="_blank">', '</a>'));
+        $html_message = sprintf('<div class="error"><p>%s</p></div>', sprintf('Smart Slider 3 requires PHP version 7.4+, plugin is currently NOT RUNNING. Current PHP version: %1$s. %2$s%2$s Consult your host about %3$s upgrading your PHP version%4$s.', PHP_VERSION, '<br>', '<a href="https://wordpress.org/support/update-php/" target="_blank">', '</a>'));
         echo wp_kses_post($html_message);
     }
 }

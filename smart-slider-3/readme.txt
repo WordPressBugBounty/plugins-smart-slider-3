@@ -3,9 +3,9 @@ Contributors: nextendweb
 Tags: slider, image slider, gallery, slideshow, carousel slider
 Donate link: https://sites.fastspring.com/nextend/product/smartslider3donate
 Requires at least: 5.0
-Tested up to: 6.9
-Stable tag: 3.5.1.32
-Requires PHP: 7.0
+Tested up to: 6.9.4
+Stable tag: 3.5.1.34
+Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -216,6 +216,17 @@ Of course! Smart Slider use protocol relative urls which works fine on http:// a
 9. Enhance your site with our FREE Layer Slider's stylish layers for a better user experience.
 
 == Changelog ==
+
+= 3.5.1.34 - 20. March 2026 =
+* Fix: Vulnerability improvements.
+
+= 3.5.1.33 - 11. March 2026 =
+* Feature: PHP8.5 compatibility.
+* Feature: Respect reduced motion option to allow prefers-reduced-motion setting of the operation system to turn down animations.
+* Fix: Wrongly stored "unpublish on" values won't be used.
+* Fix: Vulnerability improvements.
+* Fix: Better transparency handling with Resize options.
+* Other: Minimum required PHP version increased.
 
 = 3.5.1.32 - 12. January 2026 =
 * Fix: Drag and drop image uploading did not work.

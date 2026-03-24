@@ -156,10 +156,23 @@ class ExportSlider {
 
             $this->images = array_unique($this->images);
 
+            $allowedExtensions = array(
+                'jpg',
+                'jpeg',
+                'png',
+                'gif',
+                'mp4',
+                'mp3',
+                'svg',
+                'webp',
+                'avif'
+            );
+
             $usedNames = array();
             foreach ($this->images as $image) {
-                $file = ResourceTranslator::toPath($image);
-                if (Filesystem::fileexists($file)) {
+                $file      = ResourceTranslator::toPath($image);
+                $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                if (Filesystem::fileexists($file) && in_array($extension, $allowedExtensions)) {
                     $fileName = strtolower(basename($file));
                     while (in_array($fileName, $usedNames)) {
                         $fileName = $this->uniqueCounter . $fileName;

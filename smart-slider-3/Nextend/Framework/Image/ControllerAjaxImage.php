@@ -36,6 +36,7 @@ class ControllerAjaxImage extends AdminVisualManagerAjaxController {
 
     public function actionAddVisual() {
         $this->validateToken();
+        $this->validatePermission('smartslider_edit');
 
         $image = Request::$REQUEST->getVar('image');
         $this->validateVariable(!empty($image), 'image');
@@ -54,6 +55,7 @@ class ControllerAjaxImage extends AdminVisualManagerAjaxController {
 
     public function actionDeleteVisual() {
         $this->validateToken();
+        $this->validatePermission('smartslider_delete');
 
         $visualId = Request::$REQUEST->getInt('visualId');
         $this->validateVariable($visualId > 0, 'image');
@@ -72,6 +74,7 @@ class ControllerAjaxImage extends AdminVisualManagerAjaxController {
 
     public function actionChangeVisual() {
         $this->validateToken();
+        $this->validatePermission('smartslider_edit');
 
         $visualId = Request::$REQUEST->getInt('visualId');
         $this->validateVariable($visualId > 0, 'image');

@@ -718,7 +718,7 @@ class LessCompiler {
             case "comment":
                 $out->lines[] = $prop[1];
                 break;
-            case "import";
+            case "import":
                 list(, $importPath, $importId) = $prop;
                 $importPath = $this->reduce($importPath);
 

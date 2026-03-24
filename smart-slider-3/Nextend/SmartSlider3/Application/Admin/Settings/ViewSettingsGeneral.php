@@ -87,6 +87,8 @@ class ViewSettingsGeneral extends AbstractViewSettings {
 
         new OnOff($row3, 'youtube-privacy-enhanced', n2_('YouTube and Vimeo privacy enhanced mode'), 0);
 
+        new OnOff($row3, 'respect-reduced-motion', n2_('Respect reduced motion'), 0);
+
         new Number($row3, 'smooth-scroll-speed', n2_('Smooth scroll speed'), 400, array(
             'wide' => 5,
             'unit' => 'ms'
