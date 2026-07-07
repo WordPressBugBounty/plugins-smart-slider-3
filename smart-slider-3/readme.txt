@@ -4,7 +4,7 @@ Tags: slider, image slider, gallery, slideshow, carousel slider
 Donate link: https://sites.fastspring.com/nextend/product/smartslider3donate
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 3.5.1.37
+Stable tag: 3.5.1.38
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -216,6 +216,9 @@ Of course! Smart Slider use protocol relative urls which works fine on http:// a
 9. Enhance your site with our FREE Layer Slider's stylish layers for a better user experience.
 
 == Changelog ==
+
+= 3.5.1.38 - 07. July 2026 =
+* Fix: Security improvements.
 
 = 3.5.1.37 - 28. May 2026 =
 * Feature: Posts Generator - we will now offer variables for tag links as well.
