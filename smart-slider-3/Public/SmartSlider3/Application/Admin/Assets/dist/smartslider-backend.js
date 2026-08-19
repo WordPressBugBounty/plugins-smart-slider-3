@@ -21045,8 +21045,8 @@ _N2.d('GeneratorAdd', '$', function () {
         } else if (this.elements.image) {
             this.elements.image.setDesktopSrc(image);
         } else if (image !== '') {
-            if (image.match(/\.(png|jpg|jpeg|gif|webp|svg)/i) === null) {
-                _N2.Notification.error('The background image format is not correct! The supported image formats are: png, jpg, jpeg, gif, webp, svg.');
+            if (image.match(/\.(png|jpg|jpeg|gif|webp|avif|svg)/i) === null) {
+                _N2.Notification.error('The background image format is not correct! The supported image formats are: png, jpg, jpeg, gif, webp, avif, svg.');
                 $('#layerslide-backgroundImage').val('').trigger('change');
             } else if (this.sectionSlide.getProperty('background-type') === 'image') {
                 this.createImageElement();
@@ -21057,7 +21057,7 @@ _N2.d('GeneratorAdd', '$', function () {
     SmartSliderSlideBackgroundAdmin.prototype.setThumbnail = function (image, oldBackgroundImage) {
         var $thumbnail = $('#layerslide-thumbnail');
 
-        if (image !== '' && image.match(/\.(png|jpg|jpeg|gif|webp|svg)/i) && ($thumbnail.val() === '' || $thumbnail.val() === oldBackgroundImage)) {
+        if (image !== '' && image.match(/\.(png|jpg|jpeg|gif|webp|avif|svg)/i) && ($thumbnail.val() === '' || $thumbnail.val() === oldBackgroundImage)) {
             $thumbnail.val(image).trigger('change');
         }
 

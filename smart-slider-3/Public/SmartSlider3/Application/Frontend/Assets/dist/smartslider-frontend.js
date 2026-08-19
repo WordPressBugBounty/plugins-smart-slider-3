@@ -1086,6 +1086,9 @@ fixCriticalCSS('rocket-critical-css');_N2.d('SmartSliderLoad', function () {
     SmartSliderApi.prototype.openUrl = function (e, target) {
         if (this.isClickAllowed(e)) {
             var href = _NodeGetData(e.currentTarget, 'href');
+            if (!n2const.isUrlSafe(href)) {
+                return;
+            }
             if (target === undefined) {
                 target = _NodeGetData(e.currentTarget, 'target');
             }
