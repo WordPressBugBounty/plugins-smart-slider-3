@@ -20564,13 +20564,13 @@ _N2.d('GeneratorAdd', '$', function () {
         }
         if (images.length) {
             this.createSlide('image', {
-                images: _N2.Base64.encode(JSON.stringify(images))
+                images: _N2.Base64.encode(_N2._UnicodeToHTMLEntity(JSON.stringify(images)))
             });
         }
 
         if (videos.length) {
             this.createSlide('video', {
-                videos: _N2.Base64.encode(JSON.stringify(videos))
+                videos: _N2.Base64.encode(_N2._UnicodeToHTMLEntity(JSON.stringify(videos)))
             });
         }
     };
