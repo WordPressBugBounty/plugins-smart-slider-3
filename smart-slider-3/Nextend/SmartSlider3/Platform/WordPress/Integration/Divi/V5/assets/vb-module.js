@@ -2,7 +2,7 @@
  * Smart Slider 3 - native Divi 5 Visual Builder module.
  *
  * Registers a `smartslider/smart-slider-3` module in the Divi 5 builder. The module
- * offers a dropdown to pick a slider and renders a live preview inside an <iframe>
+ * offers a searchable dropdown to pick a slider and renders a live preview inside an <iframe>
  * (the same isolated preview approach used by the Divi 4 module). The server side
  * counterpart (SmartSlider3ModuleV5.php) renders the slider on the published page.
  *
@@ -38,15 +38,22 @@
     var data = window.SmartSlider3DiviV5Data || {};
     var iframeUrl = data.iframeUrl || '';
     var sliderOptions = data.sliderOptions || [{value: '-1', label: 'None'}];
+    var searchPlaceholder = data.searchPlaceholder || 'Search by name, ID or alias';
 
     /**
      * Build the `divi/select` options object from the ordered list provided by PHP.
-     * All keys are non-numeric (`-1`, `id-*`, `alias-*`) so insertion order is kept.
+     * All keys are non-numeric (`-1`, `id-*`, `alias-*`, `group-*`) so insertion order
+     * is kept. Slider groups carry a nested `options` list, which `divi/select` shows
+     * under the group's title (the group key itself can't be selected).
      */
-    function buildOptions() {
+    function buildOptions(list) {
         var options = {};
-        for (var i = 0; i < sliderOptions.length; i++) {
-            options[sliderOptions[i].value] = {label: sliderOptions[i].label};
+        for (var i = 0; i < list.length; i++) {
+            if (list[i].options) {
+                options[list[i].value] = {label: list[i].label, options: buildOptions(list[i].options)};
+            } else {
+                options[list[i].value] = {label: list[i].label};
+            }
         }
         return options;
     }
@@ -297,7 +304,11 @@
                                     type: 'field',
                                     name: 'divi/select',
                                     props: {
-                                        options: buildOptions()
+                                        options: buildOptions(sliderOptions),
+                                        // The search matches the option labels, which
+                                        // contain the slider title, `#<id>` and alias.
+                                        searchable: true,
+                                        searchPlaceholder: searchPlaceholder
                                     }
                                 }
                             }

@@ -40,6 +40,15 @@ class DiviV5 {
         ));
 
         /**
+         * The module settings panel (with the slider dropdown) is rendered in the builder's
+         * top window, so its styles are enqueued there.
+         */
+        add_action('divi_visual_builder_assets_after_enqueue_top_window_styles', array(
+            $this,
+            'enqueueVisualBuilderStyles'
+        ));
+
+        /**
          * Refresh the cached Visual Builder assets when a slider changes so the dropdown
          * stays in sync with the available sliders.
          */
@@ -88,8 +97,9 @@ class DiviV5 {
         );
 
         wp_localize_script($handle, 'SmartSlider3DiviV5Data', array(
-            'iframeUrl'    => self::getIframeUrl(),
-            'sliderOptions' => $this->getSliderOptions()
+            'iframeUrl'         => self::getIframeUrl(),
+            'sliderOptions'     => $this->getSliderOptions(),
+            'searchPlaceholder' => n2_('Search by name, ID or alias')
         ));
 
         /**
@@ -100,6 +110,25 @@ class DiviV5 {
         if ($iframeLoader) {
             wp_add_inline_script($handle, $iframeLoader, 'before');
         }
+    }
+
+    /**
+     * Enqueue the Visual Builder styles of the module settings panel.
+     *
+     * @return void
+     */
+    public function enqueueVisualBuilderStyles() {
+
+        $handle = 'smartslider3-divi5-vb';
+
+        wp_register_style($handle, false, array(), SmartSlider3Info::$version);
+        wp_enqueue_style($handle);
+
+        /**
+         * While searching in the slider dropdown, Divi keeps showing the header of a slider
+         * group even when none of its sliders match, so hide those empty groups.
+         */
+        wp_add_inline_style($handle, '#et-vb-module-advanced-slider .et-vb-option-subgroup:has(> ul:empty){display:none}');
     }
 
     /**
@@ -155,7 +184,12 @@ class DiviV5 {
      * Values are prefixed (`id-<number>` / `alias-<slug>`) so the browser preserves the
      * option order (plain numeric object keys would be reordered). `-1` means "None".
      *
-     * @return array Ordered list of `['value' => ..., 'label' => ...]` entries.
+     * Slider groups are returned as a single entry with a nested `options` list, which the
+     * dropdown shows under the group's title (like the Divi 4 module). The group entry's
+     * `group-<number>` value is only the container key, it can't be selected.
+     *
+     * @return array Ordered list of `['value' => ..., 'label' => ...]` entries, group entries
+     *               also have an `options` list in the same format.
      */
     public function getSliderOptions() {
 
@@ -173,29 +207,37 @@ class DiviV5 {
         foreach ($slidersModel->getAll(0, 'published') as $slider) {
             if ($slider['type'] == 'group') {
 
+                $groupOptions = array();
+
                 if (!empty($slider['alias'])) {
-                    $options[] = array(
+                    $groupOptions[] = array(
                         'value' => 'alias-' . $slider['alias'],
                         'label' => '― ' . n2_('Whole group') . ' - ' . $slider['title'] . ' #Alias: ' . $slider['alias']
                     );
                 }
-                $options[] = array(
+                $groupOptions[] = array(
                     'value' => 'id-' . $slider['id'],
                     'label' => '― ' . n2_('Whole group') . ' - ' . $slider['title'] . ' #' . $slider['id']
                 );
 
                 foreach ($slidersModel->getAll($slider['id'], 'published') as $_slider) {
                     if (!empty($_slider['alias'])) {
-                        $options[] = array(
+                        $groupOptions[] = array(
                             'value' => 'alias-' . $_slider['alias'],
                             'label' => '― ' . $_slider['title'] . ' #Alias: ' . $_slider['alias']
                         );
                     }
-                    $options[] = array(
+                    $groupOptions[] = array(
                         'value' => 'id-' . $_slider['id'],
                         'label' => '― ' . $_slider['title'] . ' #' . $_slider['id']
                     );
                 }
+
+                $options[] = array(
+                    'value'   => 'group-' . $slider['id'],
+                    'label'   => $slider['title'] . ' #' . $slider['id'],
+                    'options' => $groupOptions
+                );
             } else {
                 if (!empty($slider['alias'])) {
                     $options[] = array(

@@ -156,6 +156,11 @@ class ControllerAjaxBrowse extends AdminAjaxController {
             $this->displayError($media['error']);
         }
 
+        if (!function_exists('mime_content_type')) {
+            Notification::error(n2_('Uploading requires the PHP fileinfo extension. Please ask your host to enable it.'));
+            $this->response->error();
+        }
+
         $mediaMime    = mime_content_type($media['tmp_name']);
         $allowedMimes = array(
             'png'  => 'image/png',

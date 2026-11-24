@@ -3,8 +3,8 @@ Contributors: nextendweb
 Tags: slider, image slider, gallery, slideshow, carousel slider
 Donate link: https://sites.fastspring.com/nextend/product/smartslider3donate
 Requires at least: 5.0
-Tested up to: 7.1
-Stable tag: 3.5.1.40
+Tested up to: 7.1.5
+Stable tag: 3.5.1.41
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -217,7 +217,12 @@ Of course! Smart Slider use protocol relative urls which works fine on http:// a
 
 == Changelog ==
 
-= 3.5.1.40 - 28. October 2026 =
+= 3.5.1.41 - 19. November 2026 =
+* Feature: Divi 5 module - the slider dropdown is searchable by name, ID or alias, and grouped sliders show up under their group.
+* Fix: Uploading got stuck with an endless spinner when the PHP fileinfo extension was disabled. Now an error message is shown instead.
+* Other: Black Friday notification added.
+
+= 3.5.1.40 - 08. October 2026 =
 * Feature: Divi 5 module.
 * Fix: Hidden slide could trap scroll/touch/keyboard navigation.
 * Fix: Emojis in media titles, alt texts, or descriptions no longer break slide creation.

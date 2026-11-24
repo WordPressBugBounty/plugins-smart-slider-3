@@ -37,7 +37,9 @@
                     "-1": {
                       "label": "None"
                     }
-                  }
+                  },
+                  "searchable": true,
+                  "searchPlaceholder": "Search by name, ID or alias"
                 }
               }
             }
