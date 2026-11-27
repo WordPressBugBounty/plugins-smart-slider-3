@@ -9,6 +9,7 @@ use Nextend\Framework\FastImageSize\FastImageSize;
 use Nextend\Framework\Filesystem\Filesystem;
 use Nextend\Framework\Misc\Base64;
 use Nextend\Framework\ResourceTranslator\ResourceTranslator;
+use Nextend\Framework\Sanitize;
 use Nextend\Framework\View\Html;
 use Nextend\SmartSlider3\Widget\AbstractWidgetFrontend;
 
@@ -268,15 +269,16 @@ class ThumbnailBasicFrontend extends AbstractWidgetFrontend {
 
             if ($showTitle || $showDescription) {
                 $captionHTML = '';
+                // The slide title and description can come from generator data, so filter them before output.
                 if ($showTitle) {
-                    $title = $slide->getTitle();
+                    $title = Sanitize::filter_allowed_html($slide->getTitle());
                     if (!empty($title)) {
                         $captionHTML .= '<div class="' . $titleFont . '">' . $title . '</div>';
                     }
                 }
 
                 if ($showDescription) {
-                    $description = $slide->getDescription();
+                    $description = Sanitize::filter_allowed_html($slide->getDescription());
                     if (!empty($description)) {
                         $captionHTML .= '<div class="' . $descriptionFont . '">' . $description . '</div>';
                     }

@@ -3,8 +3,8 @@ Contributors: nextendweb
 Tags: slider, image slider, gallery, slideshow, carousel slider
 Donate link: https://sites.fastspring.com/nextend/product/smartslider3donate
 Requires at least: 5.0
-Tested up to: 7.1.5
-Stable tag: 3.5.1.41
+Tested up to: 7.1
+Stable tag: 3.5.1.42
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -216,6 +216,10 @@ Of course! Smart Slider use protocol relative urls which works fine on http:// a
 9. Enhance your site with our FREE Layer Slider's stylish layers for a better user experience.
 
 == Changelog ==
+
+= 3.5.1.42 - 27. November 2026 =
+* Fix: Security improvements. Thanks to Het Kalariya for discovering and reporting the issue!
+* Fix: Text in layers was cut off at a less-than sign when a number or symbol came right after it.
 
 = 3.5.1.41 - 19. November 2026 =
 * Feature: Divi 5 module - the slider dropdown is searchable by name, ID or alias, and grouped sliders show up under their group.

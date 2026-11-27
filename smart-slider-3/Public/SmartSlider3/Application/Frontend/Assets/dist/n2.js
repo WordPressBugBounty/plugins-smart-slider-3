@@ -540,6 +540,20 @@ var document = w.document,
     _cancelIdleCallback = window.cancelIdleCallback || function (id) {
         clearTimeout(id);
     },
+    /**
+     * Escapes a value for an HTML attribute that is built as a string, like esc_attr() in PHP.
+     *
+     * @param {*} value
+     * @returns {string}
+     */
+    _esc_attr = function (value) {
+        return (value + '')
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    },
     _strip_tags = function (input, allowed) {
         allowed = (((allowed || '') + '')
             .toLowerCase()
@@ -553,22 +567,48 @@ var document = w.document,
             })
     },
     _filter_allowed_html = function (input, extraTags = '') {
-        return _filter_js_events(_strip_tags(input, '<a><span><sub><sup><em><i><var><cite><b><strong><small><bdo><br><img><picture><source><u><del><bdi><ins>' + extraTags));
+        var allowedTags = '<a><span><sub><sup><em><i><var><cite><b><strong><small><bdo><br><img><picture><source><u><del><bdi><ins>' + extraTags;
+        return _filter_attributes_on(_strip_tags(input, allowedTags), allowedTags);
     },
-    _filter_js_events = function (input) {
-        var blacklist = [
-                'onclick',
-                'onfocus',
-                'ondrag',
-                'onmouse',
-                'onwheel',
-                'onscroll',
-                'ontouch',
-                'onload',
-                'onerror'
-            ],
-            blacklistRegExp = new RegExp(blacklist.join("|"), 'gi');
-        return input.replace(blacklistRegExp, 'not-allowed');
+    /**
+     * Works like Sanitize::filter_attributes_on() in PHP. The HTML is parsed in an inert <template>, so nothing in it
+     * loads or runs while it is cleaned. Elements that are not allowed are replaced with their content, and every on*
+     * event handler and every URL attribute that would run script (see n2const.isUrlSafe) is removed.
+     *
+     * @param {string} input
+     * @param {string} allowedTags In the format of _strip_tags(), for example '<a><b>'
+     * @returns {string}
+     */
+    _filter_attributes_on = function (input, allowedTags) {
+        var allowed = (((allowedTags || '') + '')
+                .toLowerCase()
+                .match(/<[a-z][a-z0-9]*>/g) || [])
+                .join(''),
+            urlAttributes = ['href', 'xlink:href', 'data-href', 'action', 'formaction'],
+            template = document.createElement('template');
+
+        template.innerHTML = input;
+
+        // Backwards, so the descendants are cleaned before an element is unwrapped.
+        var elements = template.content.querySelectorAll('*');
+        for (var i = elements.length - 1; i >= 0; i--) {
+            var element = elements[i];
+            for (var j = element.attributes.length - 1; j >= 0; j--) {
+                var name = element.attributes[j].name.toLowerCase();
+                if (name.indexOf('on') === 0 || (urlAttributes.indexOf(name) !== -1 && !n2const.isUrlSafe(element.attributes[j].value))) {
+                    element.removeAttribute(element.attributes[j].name);
+                }
+            }
+
+            if (allowed.indexOf('<' + element.localName.toLowerCase() + '>') === -1) {
+                while (element.firstChild) {
+                    element.parentNode.insertBefore(element.firstChild, element);
+                }
+                element.parentNode.removeChild(element);
+            }
+        }
+
+        return template.innerHTML;
     }
 
 _ready(function () {

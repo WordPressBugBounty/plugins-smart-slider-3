@@ -282,6 +282,15 @@ class Sanitize {
     // Tags for html videos.
     public static $videoTags = array();
 
+    // Attributes that hold a URL the browser can navigate to.
+    private static $urlAttributes = array(
+        'href',
+        'xlink:href',
+        'data-href',
+        'action',
+        'formaction'
+    );
+
     private static function getCharset() {
 
         return Platform::getCharset();
@@ -648,7 +657,42 @@ class Sanitize {
         return $output;
     }
 
+    /**
+     * Tells whether a URL is safe to use as a link target, for example in href, data-href, a form action or an iframe
+     * src. The javascript:, vbscript: and data: schemes are rejected.
+     *
+     * Before browsers read the scheme, they decode HTML entities and ignore letter case, whitespace and control
+     * characters, so the check does the same. This catches obfuscated forms like "JavaScript:", "java\tscript:",
+     * "\x01javascript:" and "javascript&colon;".
+     *
+     * Keep it in sync with n2const.isUrlSafe() in Frontend/Assets/js/n2/consts.js. That one gets its values from the
+     * DOM, where the browser has already decoded the entities.
+     *
+     * @param string $url
+     *
+     * @return bool
+     */
+    public static function isUrlSafe($url) {
+        if (is_array($url) || is_object($url)) {
+            return false;
+        }
+
+        // Browsers also decode numeric entities without the closing semicolon, like &#58
+        $url = preg_replace('/&#(?:[xX][0-9a-fA-F]++|[0-9]++)(?!;)/', '$0;', (string)$url);
+        $url = html_entity_decode($url, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+        $normalized = strtolower(preg_replace('/[\x00-\x20]+/', '', $url));
+
+        return !preg_match('/^(?:javascript|vbscript|data):/', $normalized);
+    }
+
     public static function filter_allowed_html($input, $extraTags = '') {
+
+        /**
+         * A "<" that cannot start a tag, like in "I <3 QA" or "1<2", is text for the browser, but strip_tags() removes
+         * everything after it. Encode it first, so the text stays, like in _filter_allowed_html() in JavaScript.
+         */
+        $input = preg_replace('/<(?![a-zA-Z\/!?])/', '&lt;', (string)$input);
 
         return self::filter_attributes_on(strip_tags($input, '<a><span><sub><sup><em><i><var><cite><b><strong><small><bdo><br><img><picture><source><u><del><bdi><ins>' . $extraTags));
     }
@@ -674,14 +718,15 @@ class Sanitize {
 
             for ($els = $dom->getElementsByTagname('*'), $i = $els->length - 1; $i >= 0; $i--) {
                 for ($attrs = $els->item($i)->attributes, $ii = $attrs->length - 1; $ii >= 0; $ii--) {
-                    if (substr($attrs->item($ii)->name, 0, 2) === 'on') {
+                    $attributeName = strtolower($attrs->item($ii)->name);
+                    if (substr($attributeName, 0, 2) === 'on') {
                         $els->item($i)
                             ->removeAttribute($attrs->item($ii)->name);
 
                         continue;
                     }
 
-                    if ($attrs->item($ii)->name === 'href' && strpos($attrs->item($ii)->value, 'javascript:') !== false) {
+                    if (in_array($attributeName, self::$urlAttributes, true) && !self::isUrlSafe($attrs->item($ii)->value)) {
                         $els->item($i)
                             ->removeAttribute($attrs->item($ii)->name);
                     }

@@ -35,10 +35,12 @@ class ScrollTo implements ParserInterface {
                 break;
             default:
                 if (is_numeric($argument)) {
-                    $onclick = 'n2ss.scroll(event, "element", "#n2-ss-' . $argument . '");';
-                } else {
-                    $onclick = 'n2ss.scroll(event, "element", "' . $argument . '");';
+                    $argument = '#n2-ss-' . $argument;
                 }
+                /**
+                 * The argument can come from generator data, so it must be encoded as a JavaScript string.
+                 */
+                $onclick = 'n2ss.scroll(event, "element", ' . json_encode($argument) . ');';
                 break;
         }
         $attributes['onclick'] = $onclick;

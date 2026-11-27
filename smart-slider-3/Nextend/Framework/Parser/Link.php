@@ -4,6 +4,7 @@ namespace Nextend\Framework\Parser;
 
 use Nextend\Framework\Parser\Link\ParserInterface;
 use Nextend\Framework\ResourceTranslator\ResourceTranslator;
+use Nextend\Framework\Sanitize;
 
 class Link {
 
@@ -20,9 +21,12 @@ class Link {
     public static function parse($url, &$attributes, $isEditor = false) {
         if ($url == '#' || $isEditor) {
             $attributes['onclick'] = "return false;";
+            if (!Sanitize::isUrlSafe($url)) {
+                $url = '#';
+            }
         } else {
             $url = trim($url);
-            if (substr($url, 0, 11) === "javascript:") {
+            if (!Sanitize::isUrlSafe($url)) {
                 return '#';
             } else {
                 preg_match('/^([a-zA-Z]+)\[(.*)]$/', $url, $matches);
